@@ -16,7 +16,7 @@ How comparable apps compose text:
 
 - gh-dash comments through its `inputbox` component, a wrapper around the bubbles textarea: `ctrl+d` submits, `esc` cancels, and no external editor is involved.
 - crush composes in a bubbles textarea where `enter` sends and `shift+enter` or `ctrl+j` adds a newline, with `ctrl+o` opening an external editor as an extra.
-- A classic terminal sends `ctrl+enter` as a plain `enter`. Bubble Tea v2 asks the terminal for key disambiguation by default, per the `Program` docs in `github.com/charmbracelet/bubbletea`, and reports what it got in a `tea.KeyboardEnhancementsMsg`, so `ctrl+enter` is a distinct key only where the terminal supports that.
+- A classic terminal sends `ctrl+enter` as a plain `enter`. Bubble Tea v2 asks the terminal for key disambiguation by default, per the `KeyboardEnhancements` docs in `github.com/charmbracelet/bubbletea`, and reports what it got in a `tea.KeyboardEnhancementsMsg`, so `ctrl+enter` is a distinct key only where the terminal supports that.
 - The bubbles textarea (`charm.land/bubbles/v2/textarea`) is a multi-line input with word wrap, cursor movement, paste and a configurable key map. It binds many control keys itself, `ctrl+n`, `ctrl+d` and `ctrl+e` among them.
 
 ## Decision
