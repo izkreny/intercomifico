@@ -17,7 +17,7 @@ The first blueprint set 100% coverage of `Update` as its target. A scan of the t
 - `teatest`, which drives a running program over time, is rare and partly abandoned: bubbletea's own example and gh-dash's tests have it commented out.
 - Putting the API client behind an interface, so the UI is tested against a fake, appears only in kl; gh-dash's package-global client is the counter-example.
 
-In a terminal app the UI tests are cheap: `Update` is a function call and `View()` returns a `tea.View` whose `Content` is plain text, both inside the `go test` process.
+In a terminal app the UI tests are cheap: `Update` is a function call and `View()` returns a `tea.View` whose `Content` is the rendered string, its styling encoded as ANSI escape codes that `golden.RequireEqual` escapes before comparing, both inside the `go test` process.
 
 ## Decision
 
