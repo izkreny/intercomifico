@@ -45,5 +45,5 @@ The v1 endpoints:
 
 - Configuration in v1 is three environment variables. A config file arrives with its own ADR when something needs one, such as user-defined key bindings.
 - Ten seconds of polling, one search and one conversation fetch a tick, is twelve calls a minute, far inside the rate limit.
-- Search results can lag a few minutes behind changes made elsewhere, per Intercom's own description of contact search, so a refresh is near real-time at best.
+- Intercom documents no freshness guarantee for conversation search, so a change made elsewhere shows up within one poll interval at best.
 - Which scopes the private app needs is only partly documented: "Read conversations" and "Write conversations", plus read access to admins and contacts. The first working build confirms the set, and the README records it.
