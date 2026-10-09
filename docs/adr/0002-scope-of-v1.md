@@ -28,7 +28,7 @@ v1 lets one teammate, in one workspace:
 - Snooze, assign (to me, another teammate or a team) and close a conversation.
 - See new activity by polling, at an interval the API decision sets.
 
-Out of v1: tickets, tags, attachments, SLA timers, free-text conversation search, more than one workspace, and real-time push through a webhook relay.
+Out of v1: tickets, tags, attachments, saved replies (Intercom macros, which only the Preview API offers), SLA timers, free-text conversation search, more than one workspace, and real-time push through a webhook relay.
 
 ## Consequences
 
