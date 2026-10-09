@@ -27,7 +27,7 @@ Per ADR 0006:
 - `go vet ./...`
 - `go test -race ./...`
 
-`go test ./... -update` rewrites golden files after a deliberate rendering change. It is not a gate; the changed `.golden` files are reviewed in the diff. No linter is set up yet; choosing one belongs to the CI issue.
+`go test ./internal/ui/... -update` rewrites golden files after a deliberate rendering change. It is not a gate; the changed `.golden` files are reviewed in the diff. No linter is set up yet; choosing one belongs to the CI issue.
 
 ## Docs check
 
