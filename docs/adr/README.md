@@ -13,3 +13,4 @@ Every decision behind how Intercomifico is built, one per file, in the format AD
 | [0005](0005-reply-composer.md)                        | Reply composer                 | Accepted |
 | [0006](0006-testing.md)                               | Testing                        | Accepted |
 | [0007](0007-no-persistence-in-v1.md)                  | No persistence in v1           | Accepted |
+| [0008](0008-ui-architecture.md)                       | UI architecture and layout     | Accepted |
