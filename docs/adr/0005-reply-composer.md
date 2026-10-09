@@ -16,15 +16,16 @@ How comparable apps compose text:
 
 - gh-dash comments through its `inputbox` component, a wrapper around the bubbles textarea: `ctrl+d` submits, `esc` cancels, and no external editor is involved.
 - crush composes in a bubbles textarea where `enter` sends and `shift+enter` or `ctrl+j` adds a newline, with `ctrl+o` opening an external editor as an extra.
+- A classic terminal sends `ctrl+enter` as a plain `enter`. Bubble Tea v2 asks the terminal for key disambiguation by default, per the `Program` docs in `github.com/charmbracelet/bubbletea`, and reports what it got in a `tea.KeyboardEnhancementsMsg`, so `ctrl+enter` is a distinct key only where the terminal supports that.
 - The bubbles textarea (`charm.land/bubbles/v2/textarea`) is a multi-line input with word wrap, cursor movement, paste and a configurable key map. It binds many control keys itself, `ctrl+n`, `ctrl+d` and `ctrl+e` among them.
 
 ## Decision
 
 - **v1 composes replies and notes in a bubbles textarea inside the app, and nowhere else.** No external editor and no subprocess.
-- `enter` inserts a newline, since support replies are usually several lines; a dedicated key sends, and sending is never implicit.
+- `enter` inserts a newline, since support replies are usually several lines. `ctrl+enter` sends, and `ctrl+s` sends too, so a terminal without key disambiguation can still send. Sending is never implicit.
 - Leaving the composer keeps the draft. Nothing the user typed is discarded without an explicit action.
 - The composer shows whether it holds a public reply or an internal note, and switching between them keeps the text.
-- The exact key bindings are set in the composer's implementation issue and checked against the textarea's own bindings, so none of them is shadowed.
+- The remaining key bindings are set in the composer's implementation issue and checked against the textarea's own bindings, so none of them is shadowed.
 
 ## Consequences
 
