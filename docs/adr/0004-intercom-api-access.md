@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-v1 needs about ten REST endpoints, per ADR 0002. What Intercom offers, read from its OpenAPI description (`github.com/intercom/Intercom-OpenAPI`, `descriptions/2.16`) and its developer docs:
+v1 needs about ten REST endpoints, per ADR 0002. What Intercom offers, read from its OpenAPI description (`github.com/intercom/Intercom-OpenAPI`, `descriptions/2.16`) and its developer docs at https://developers.intercom.com/:
 
 - The newest stable API version is 2.16, chosen per request with the `Intercom-Version` header; without it, the version set on the app in the Developer Hub applies. Preview, formerly Unstable, can change without a new version number.
 - A tool for one's own workspace authenticates with an access token from a private app in the Developer Hub, sent as `Authorization: Bearer <token>`. OAuth is meant for public apps.
