@@ -10,3 +10,4 @@ Every decision behind how Intercomifico is built, one per file, in the format AD
 | [0002](0002-scope-of-v1.md)                           | Scope of v1                    | Accepted |
 | [0003](0003-go-and-charm-library-versions.md)         | Go and Charm library versions  | Accepted |
 | [0004](0004-intercom-api-access.md)                   | Intercom API access            | Accepted |
+| [0005](0005-reply-composer.md)                        | Reply composer                 | Accepted |
