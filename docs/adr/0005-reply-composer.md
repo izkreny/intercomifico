@@ -23,7 +23,8 @@ How comparable apps compose text:
 
 - **v1 composes replies and notes in a bubbles textarea inside the app, and nowhere else.** No external editor and no subprocess.
 - `enter` inserts a newline, since support replies are usually several lines. `ctrl+enter` sends, and `ctrl+s` sends too, so a terminal without key disambiguation can still send. Sending is never implicit.
-- Leaving the composer keeps the draft. Nothing the user typed is discarded without an explicit action.
+- **Drafts belong to conversations.** The composer keeps one draft per conversation id, in memory, and opening another conversation shows that conversation's own draft, empty if it has none. A send always goes to the conversation the draft belongs to.
+- Leaving the composer keeps its draft. Nothing the user typed is discarded without an explicit action.
 - The composer shows whether it holds a public reply or an internal note, and switching between them keeps the text.
 - The remaining key bindings are set in the composer's implementation issue and checked against the textarea's own bindings, so none of them is shadowed.
 
