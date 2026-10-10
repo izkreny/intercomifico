@@ -2,8 +2,6 @@
 
 A terminal client for Intercom customer conversations, written in Go on the Charm stack (bubbletea, bubbles, lipgloss).
 
-`CLAUDE.md` is a symlink to this file, so edit this one.
-
 ## Decisions
 
 Every architecture decision is an ADR in `docs/adr/`, indexed in `docs/adr/README.md`. Read the ADRs a task touches before writing code for it. Work that needs a decision no ADR holds gets that ADR first, per ADR 0001.
