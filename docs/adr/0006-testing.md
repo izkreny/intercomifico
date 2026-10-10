@@ -27,11 +27,11 @@ In a terminal app the UI tests are cheap: `Update` is a function call and `View(
 - **The UI depends on an interface for the Intercom calls it makes**, declared where it is used, and its tests pass a hand-written fake returning prepared data or errors. UI tests never touch HTTP.
 - **`internal/intercom` is tested against `net/http/httptest`**: a local server inside the test answers with JSON taken from the OpenAPI examples, and the test checks the request the client sent, including the `Intercom-Version` and `Authorization` headers. No test reaches the network.
 - **No `teatest`.**
-- **The checks are `go vet ./...` and `go test -race ./...`**, and both must pass before a branch is ready.
+- **The test checks are `go vet ./...` and `go test -race ./...`**, run together as `task test` per ADR 0010, and they must pass before a branch is ready.
 
 ## Consequences
 
 - The test suite runs in seconds and needs no Intercom account, token or network.
 - Golden files make every rendering change visible in review, at the cost of updating them on purpose whenever the layout changes.
 - Nothing exercises the real Intercom API automatically. Recording real responses for replay, as crush does, is possible later and needs its own ADR, since it involves a real token and real customer data.
-- A linter beyond `go vet` is a separate decision, made together with CI in its own `infra` issue.
+- Linting is ADR 0010's, which adds `task lint` as the second gate.

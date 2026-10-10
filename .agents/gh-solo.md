@@ -12,12 +12,12 @@ The default layer labels, mapped onto this repository:
 
 ## Check commands
 
-Per ADR 0006:
+Per ADRs 0006 and 0010, run from the repository root with the toolchain mise.toml pins:
 
-- `go vet ./...`
-- `go test -race ./...`
+- `task lint`
+- `task test`
 
-`go test ./internal/ui/... -update` rewrites golden files after a deliberate rendering change. It is not a gate; the changed `.golden` files are reviewed in the diff. No linter is set up yet; choosing one belongs to the CI issue.
+`task test:update` rewrites golden files after a deliberate rendering change. It is not a gate; the changed `.golden` files are reviewed in the diff.
 
 ## Docs check
 
