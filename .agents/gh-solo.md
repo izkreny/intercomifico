@@ -12,7 +12,7 @@ The default layer labels, mapped onto this repository:
 
 ## Check commands
 
-Per ADRs 0006 and 0010, run from the repository root with the toolchain mise.toml pins:
+Run from the repository root with the toolchain mise.toml pins:
 
 - `task lint`
 - `task audit`
