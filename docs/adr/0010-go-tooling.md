@@ -26,7 +26,7 @@ Besides the compiler, Charm's own repositories rely on three tools: a formatter,
   - `task fmt` formats the code.
   - `task lint` runs the linters.
   - `task test` runs `go vet ./...` and `go test -race ./...`.
-  - `task audit` runs `govulncheck ./...` under a two-minute `timeout`. Vulnerabilities found (exit 3) always fail it. A network problem (exit 1, or the timeout) fails it in CI, recognised by the `CI` environment variable GitHub Actions sets, and elsewhere prints a warning and passes, so working offline never blocks.
+  - `task audit` runs `govulncheck ./...` under a 60-second `timeout`. Vulnerabilities found (exit 3) always fail it. A network problem (exit 1, or the timeout) fails it in CI, recognised by the `CI` environment variable GitHub Actions sets, and elsewhere prints a warning and passes, so working offline never blocks.
   - `task ci` runs every gate in order and stops at the first that fails: `golangci-lint fmt --diff`, which prints what formatting would change and exits non-zero if anything would, then `task lint`, `task test` and `task audit`, last so that a network problem never hides the results about the change itself.
   - `task test:update` rewrites golden files with `go test ./internal/ui/... -update`, per ADR 0006.
   - `task run` starts the app.
