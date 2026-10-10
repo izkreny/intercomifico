@@ -26,7 +26,7 @@ v1 needs about ten REST endpoints, per ADR 0002. What Intercom offers, read from
 - **The token comes from the `INTERCOMIFICO_TOKEN` environment variable and nowhere else.** The app never writes it to disk, never logs it, and refuses to start without it. Where it is stored is the user's choice, such as, in Fish, `set -x INTERCOMIFICO_TOKEN (secret-tool lookup intercom token)`.
 - **The region comes from `INTERCOMIFICO_REGION`**, one of `eu`, `us` or `au`, defaulting to `eu`, where the owner's workspace is hosted.
 - **The acting admin is resolved once at startup with `GET /me`**, and its id goes into every reply and conversation action.
-- **Queues are refreshed by polling** every `INTERCOMIFICO_POLL_INTERVAL` (a Go duration, default `10s`, `0` to disable): each tick re-runs the visible queue's search and refetches the open conversation with `GET /conversations/{id}`, whether or not the search still returns it, so a conversation closed, snoozed or reassigned elsewhere shows its new state.
+- **Queues are refreshed by polling** every `INTERCOMIFICO_POLL_INTERVAL` (a Go duration, default `2s`, `0` to disable): each tick re-runs the visible queue's search and refetches the open conversation with `GET /conversations/{id}`, whether or not the search still returns it, so a conversation closed, snoozed or reassigned elsewhere shows its new state.
 - **A 429 becomes a typed error carrying the reset time.** Polling pauses until then, and a user action that hits it shows the error instead of retrying behind the user's back.
 
 The v1 endpoints:
@@ -45,6 +45,6 @@ The v1 endpoints:
 ## Consequences
 
 - Configuration in v1 is three environment variables. Settings beyond them go in a TOML file the app only reads, per ADR 0007, once something needs one, such as user-defined key bindings.
-- Ten seconds of polling, one search and one conversation fetch a tick, is twelve calls a minute, far inside the rate limit.
+- Two-second polling, one search and one conversation fetch a tick, is sixty calls a minute: under 1% of the 10,000 a minute each app may make, and of the 25,000 a minute the workspace shares across all its apps.
 - Intercom documents no freshness guarantee for conversation search, so a change made elsewhere shows up within one poll interval at best.
 - Which scopes the private app needs is only partly documented: "Read conversations" and "Write conversations", plus read access to admins and contacts. The first working build confirms the set, and the README records it.
