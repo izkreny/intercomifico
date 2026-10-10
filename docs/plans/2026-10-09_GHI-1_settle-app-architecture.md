@@ -6,11 +6,9 @@ Issue: #1. Its questions and its `Done when` list are the scope; this plan only 
 
 ## Approach
 
-The first blueprint is input, not a spec. Each question in #1 is settled with the owner one at a time, in an order where earlier answers constrain later ones: scope first, because it decides which API calls matter, then the API, the editor, the stack, and structure and testing last, since the layout follows from everything before it. Questions the answers raise, such as what the app may write to disk and how it is themed, are settled the same way, each in its own ADR.
+Each question in #1 is settled with the owner one at a time, in an order where earlier answers constrain later ones: scope first, because it decides which API calls matter, then the API, the editor, the stack, and structure and testing last, since the layout follows from everything before it. Questions the answers raise, such as what the app may write to disk and how it is themed, are settled the same way, each in its own ADR.
 
 Every settled decision becomes its own ADR in `docs/adr/` (new), in Michael Nygard's format: Status, Context, Decision, Consequences. An ADR is never edited once accepted; a changed decision is a new ADR that supersedes it, which is why one decision per file matters. Facts about Intercom's API and the Charm libraries are read from their current docs during the spike, never recalled, and each ADR cites what it read.
-
-The blueprint's defects listed in #1 are resolved inside the ADR whose decision they belong to, so none needs an ADR of its own.
 
 ## Steps
 

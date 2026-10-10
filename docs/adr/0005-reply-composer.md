@@ -10,8 +10,6 @@ Accepted
 
 ## Context
 
-The first blueprint planned a bubbles textarea first and a full-screen Neovim handoff second, with the conversation history in a split window. Its handoff code passed customer text through `sh -c`, which lets a customer message run commands on the replying teammate's machine.
-
 How comparable apps compose text:
 
 - gh-dash comments through its `inputbox` component, a wrapper around the bubbles textarea: `ctrl+d` submits, `esc` cancels, and no external editor is involved.
@@ -33,4 +31,4 @@ How comparable apps compose text:
 
 - Composing works the same in every terminal and needs no editor configuration.
 - Long replies are less comfortable than in a real editor. Opening `$VISUAL` or `$EDITOR` on the draft, with the conversation history below a cut line as `git commit` does, is the planned extension, and it gets its own ADR when it is picked up.
-- The blueprint's Neovim handoff, and with it the shell-injection risk, is dropped.
+- With no subprocess, customer text never passes through a shell or a temporary file.

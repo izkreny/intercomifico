@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-The first blueprint mocked queues named "Open Tickets", "Snoozed Queue" and "Unassigned", an "SLA remaining" timer and a status bar. Reading Intercom's REST API (OpenAPI description 2.16, `github.com/intercom/Intercom-OpenAPI`) showed that two of those do not exist as data:
+Intercom's REST API (OpenAPI description 2.16, `github.com/intercom/Intercom-OpenAPI`) sets what a terminal inbox can be built on:
 
 - Conversations carry no inbox field. A queue is a filter on `POST /conversations/search`: `state`, `admin_assignee_id`, `team_assignee_id` and similar fields.
 - `sla_applied` carries only a name and a status (`hit`, `missed`, `active`, `cancelled`), never a deadline, so no time remaining can be shown.
@@ -33,6 +33,6 @@ Out of v1: tickets, tags, attachments, the user's own local saved replies, SLA t
 
 ## Consequences
 
-- The mock's "SLA remaining" timer is dropped rather than approximated.
+- No SLA countdown is shown, since the API exposes no deadline to count down to.
 - Each action above becomes at least one implementation issue; anything on the out list needs a new ADR before work starts on it.
 - A webhook relay stays a `someday` idea: it needs its own hosted service, so it gets its own ADR if polling ever proves too slow.

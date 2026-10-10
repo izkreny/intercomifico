@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-The first blueprint kept everything in one `main` package, with no notion of which pane has focus and fixed widths that ignore the terminal size. Two shapes for a multi-pane Bubble Tea app appear in the reference code:
+Two shapes for a multi-pane Bubble Tea app appear in the reference code:
 
 - **crush** (`charmbracelet/crush`, in the UI conventions file of its `internal/ui` package): one top-level Bubble Tea model is the only model. It owns the state, routes every message in one `Update`, tracks focus in an explicit field, and computes the layout. Sub-components are plain structs with methods the main model calls, returning a `tea.Cmd` when they need a side effect; none takes part in the message loop. Logic is split across files, never into nested models. It never does IO in `Update` and never changes state inside a command.
 - **gh-dash** (`dlvhdr/gh-dash`): each pane is a sub-model with its own `Update`, composed by a root model. Its root file grew to 1946 lines anyway, and focus is spread across boolean checks on several components.

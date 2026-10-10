@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Intercomifico starts from a blueprint written in an earlier session, which mixes decisions, example code and defects in one file. Every later issue needs a place to cite for why the app is built the way it is, and a decision that changes later must not silently rewrite the reasoning behind work already done.
+Every issue needs a place to cite for why the app is built the way it is, and a decision that changes later must not silently rewrite the reasoning behind work already done.
 
 ## Decision
 
@@ -23,5 +23,4 @@ Intercomifico starts from a blueprint written in an earlier session, which mixes
 ## Consequences
 
 - Every implementation issue cites the ADR it implements. Work that needs a decision no ADR holds gets that ADR first.
-- The blueprint stays unversioned. Anything in it that no ADR adopts is dropped.
 - Changing one's mind costs a new file rather than an edit, which is the point: the old reasoning stays readable next to the new.

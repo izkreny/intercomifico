@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-The first blueprint set 100% coverage of `Update` as its target. A scan of the test files and CI configuration of the 72 reference repositories found:
+A scan of the test files and CI configuration of the 72 reference repositories found:
 
 - Coverage gates are rare: three repositories fail CI on a coverage percentage, `charmbracelet/soft-serve` the only one of Charm's, and none aims at 100%.
 - Golden files are Charm's own practice for rendered output, in `charmbracelet/x`, bubbles, lipgloss, glamour, crush, fang and bubbletea, through `github.com/charmbracelet/x/exp/golden`: `golden.RequireEqual` compares output with `testdata/<TestName>.golden`, and `go test ./... -update` rewrites the files.
