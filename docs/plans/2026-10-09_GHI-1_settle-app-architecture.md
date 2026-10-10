@@ -17,13 +17,15 @@ Every settled decision becomes its own ADR in `docs/adr/` (new), in Michael Nyga
 - Settle Intercom API access (token supply and storage, pinned API version, regions, how new messages arrive, the saved-replies endpoint) and the client living in this repository, and record them as an ADR.
 - Settle the reply composer, its saved-reply picker included, and record it as an ADR.
 - Settle the Go version and the Charm library major versions and record them as an ADR.
-- Settle testing (coverage, golden files, fakes for the API client, the exact check commands) and record it as an ADR.
+- Settle testing (coverage, golden files, fakes for the API client) and record it as an ADR.
+- Settle the Go tooling (formatter, linter, task runner, toolchain pins) and the exact check commands, and record them as an ADR.
 - Settle what the app may write to disk and record it as an ADR.
+- Settle the debug log and record it as an ADR.
 - Settle the UI architecture and package layout and record them as an ADR.
 - Settle theming and record it as an ADR.
 - Add `docs/adr/README.md` (new), indexing every ADR with its status, as the entry point later issues link to.
-- Add `AGENTS.md` (new), with `CLAUDE.md` (new) as a symlink to it, pointing agents at the ADRs and at the reference clones: Charm's own repositories as canonical, community apps for ideas, and Intercom's OpenAPI description and SDKs.
-- Add `.agents/gh-solo.md` (new), recording the layer label set, the check commands from the testing ADR, and the docs-check scope.
+- Add `AGENTS.md` (new), pointing agents at the ADRs and at the reference clones: Charm's own repositories as canonical, community apps for ideas, and Intercom's OpenAPI description and SDKs.
+- Add `.agents/gh-solo.md` (new), recording the layer label set, the check commands from the tooling ADR, and the docs-check scope.
 - Propose the first implementation issues from the accepted ADRs through the tracker's create flow.
 
 ## Verification
@@ -39,4 +41,4 @@ None.
 
 ## Settled
 
-- CI is decided inside its own `infra` issue; the testing ADR names the check commands, and that issue turns them into required status checks on `main`.
+- CI is decided inside its own `infra` issue; the tooling ADR names the check commands, and that issue turns them into required status checks on `main`.
