@@ -24,9 +24,10 @@ v1 needs about ten REST endpoints, per ADR 0002. What Intercom offers, read from
 - **A hand-written client in `internal/intercom`**, covering only the endpoints v1 uses, on `net/http` with a `context.Context` on every call. It imports nothing from the UI, so it can move into its own repository unchanged if it ever gains a second user. The official SDKs are models for its naming, pagination and errors, never dependencies.
 - **Every request pins `Intercom-Version: 2.16`.** Moving to a newer version is a new ADR.
 - **The token comes from the `INTERCOMIFICO_TOKEN` environment variable and nowhere else.** The app never writes it to disk, never logs it, and refuses to start without it. Where it is stored is the user's choice, such as, in Fish, `set -x INTERCOMIFICO_TOKEN (secret-tool lookup intercom token)`.
-- **The region comes from `INTERCOMIFICO_REGION`**, one of `eu`, `us` or `au`, defaulting to `eu`, where the owner's workspace is hosted.
+- **Every other setting has a built-in default, overridden by the settings file, overridden in turn by an environment variable.** The file is `$XDG_CONFIG_HOME/intercomifico/settings.toml` per ADR 0007, and a missing file is not an error. The file holds what the user always wants; the environment holds what one run wants. The app refuses to start when the file contains a token, so the token can never end up in it.
+- **The region is the `region` setting** (`INTERCOMIFICO_REGION`), one of `eu`, `us` or `au`, defaulting to `eu`, where the owner's workspace is hosted.
 - **The acting admin is resolved once at startup with `GET /me`**, and its id goes into every reply and conversation action.
-- **Queues are refreshed by polling** every `INTERCOMIFICO_POLL_INTERVAL` (a Go duration, default `2s`, `0` to disable): each tick re-runs the visible queue's search and refetches the open conversation with `GET /conversations/{id}`, whether or not the search still returns it, so a conversation closed, snoozed or reassigned elsewhere shows its new state.
+- **Queues are refreshed by polling** at the `poll_interval` setting (`INTERCOMIFICO_POLL_INTERVAL`; a Go duration, default `2s`, `0` to disable): each tick re-runs the visible queue's search and refetches the open conversation with `GET /conversations/{id}`, whether or not the search still returns it, so a conversation closed, snoozed or reassigned elsewhere shows its new state.
 - **Reference data is refreshed on a slow timer**, so a session that runs for days stays current: every 15 minutes the app fetches the macros changed since its last fetch (`updated_since`) along with the admins and teams, and every hour it re-fetches all macros, so deleted ones disappear.
 - **A 429 becomes a typed error carrying the reset time.** Polling pauses until then, and a user action that hits it shows the error instead of retrying behind the user's back.
 
@@ -45,7 +46,7 @@ The v1 endpoints:
 
 ## Consequences
 
-- Configuration in v1 is three environment variables. Settings beyond them go in a TOML file the app only reads, per ADR 0007, once something needs one, such as user-defined key bindings.
+- Configuration in v1 is two settings in the settings file or the environment, plus the token in the environment only. Later settings, such as user-defined key bindings, join the same file and the same precedence.
 - Two-second polling, one search and one conversation fetch a tick, is sixty calls a minute: under 1% of the 10,000 a minute each app may make, and of the 25,000 a minute the workspace shares across all its apps.
 - Intercom documents no freshness guarantee for conversation search, so a change made elsewhere shows up within one poll interval at best.
 - Which scopes the private app needs is only partly documented: "Read conversations" and "Write conversations", plus read access to admins and contacts. The first working build confirms the set, and the README records it.
