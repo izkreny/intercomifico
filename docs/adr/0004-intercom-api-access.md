@@ -23,7 +23,7 @@ v1 needs about ten REST endpoints, per ADR 0002. What Intercom offers, read from
 
 - **A hand-written client in `internal/intercom`**, covering only the endpoints v1 uses, on `net/http` with a `context.Context` on every call. It imports nothing from the UI, so it can move into its own repository unchanged if it ever gains a second user. The official SDKs are models for its naming, pagination and errors, never dependencies.
 - **Every request pins `Intercom-Version: 2.16`.** Moving to a newer version is a new ADR.
-- **The token comes from the `INTERCOMIFICO_TOKEN` environment variable and nowhere else.** The app never writes it to disk, never logs it, and refuses to start without it. Where it is stored is the user's choice, such as `set -x INTERCOMIFICO_TOKEN (secret-tool lookup intercom token)`.
+- **The token comes from the `INTERCOMIFICO_TOKEN` environment variable and nowhere else.** The app never writes it to disk, never logs it, and refuses to start without it. Where it is stored is the user's choice, such as, in Fish, `set -x INTERCOMIFICO_TOKEN (secret-tool lookup intercom token)`.
 - **The region comes from `INTERCOMIFICO_REGION`**, one of `eu`, `us` or `au`, defaulting to `eu`, where the owner's workspace is hosted.
 - **The acting admin is resolved once at startup with `GET /me`**, and its id goes into every reply and conversation action.
 - **Queues are refreshed by polling** every `INTERCOMIFICO_POLL_INTERVAL` (a Go duration, default `10s`, `0` to disable): each tick re-runs the visible queue's search and refetches the open conversation with `GET /conversations/{id}`, whether or not the search still returns it, so a conversation closed, snoozed or reassigned elsewhere shows its new state.
