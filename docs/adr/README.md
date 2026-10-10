@@ -17,3 +17,4 @@ Every decision behind how Intercomifico is built, one per file, in the format AD
 | [0009](0009-theming.md)                               | Theming                        | Accepted |
 | [0010](0010-go-tooling.md)                            | Go tooling                     | Accepted |
 | [0011](0011-debug-log.md)                             | Debug log                      | Accepted |
+| [0012](0012-tabs.md)                                  | Tabs                           | Accepted |

@@ -19,19 +19,21 @@ ADR 0006 tests behaviour by calling `Update` directly, which reaches the whole a
 
 ## Decision
 
-- **One Bubble Tea model, in `internal/ui`, handles every message**, following crush's conventions above. The panes (queue list, conversation, composer, customer panel) are plain structs with methods; none has its own `Update`.
+- **The inbox tab is one model that handles every message reaching it**, following crush's conventions above. It sits inside the frame of ADR 0012, which is the app's only top-level model. The panes (queue list, conversation, composer, customer panel) are plain structs with methods; none has its own `Update`.
 - **Focus is one explicit field** with a value per pane, and every key press is routed by it, so a letter typed into the composer never triggers an action key.
 - **Layout follows `tea.WindowSizeMsg`**: pane sizes are computed from the terminal size, never fixed.
 - **Rendering composes strings with lipgloss.** crush's Ultraviolet screen buffer is not adopted in v1; it earns its place with overlays and mouse hit-testing that v1 does not have.
 - **Key bindings are a `key.Binding` key map** from `charm.land/bubbles/v2/key`, shown in a footer through `charm.land/bubbles/v2/help`.
 - **ANSI-aware string handling uses `github.com/charmbracelet/x/ansi`**, never byte slicing.
 - **The package layout:**
-  - The `main` package at the repository root reads the environment from ADR 0004, builds the client and starts the program.
+  - The `main` package in `cmd/intercomifico` calls `Run`, per ADR 0012.
+  - The root package `intercomifico` holds `Run`, which reads the settings and token from ADR 0004, builds the client, the frame and the inbox, and starts the program.
+  - `app` is the public tab contract from ADR 0012.
   - `internal/intercom` is the API client from ADR 0004.
-  - `internal/ui` holds the model, one file per pane plus the focus, layout, key map and styles, and declares the interface for the Intercom calls it makes, per ADR 0006.
+  - `internal/ui` holds the frame and the inbox tab: one file per pane plus the focus, layout, key map and styles, and the interface for the Intercom calls it makes, per ADR 0006.
 
 ## Consequences
 
-- One `Update` is the single entry point for behaviour, so tests reach any of it by sending a message.
-- The main model will grow. Splitting it by file, as crush does, is what keeps it readable; a nested model is not the remedy.
+- The inbox's `Update` is the single entry point for its behaviour, so tests reach any of it by sending a message.
+- The inbox model will grow. Splitting it by file, as crush does, is what keeps it readable; a nested model is not the remedy.
 - Adopting Ultraviolet later, for dialogs or mouse support, is a new ADR.

@@ -21,7 +21,7 @@ Two vocabularies are candidates for the role names:
 
 ## Decision
 
-- **Colours are named by DaisyUI's twenty semantic names, as they are**, in one palette in the styles file ADR 0008 places in `internal/ui`. No other code names a colour; a screen picks a role, and an internal note, for instance, uses `warning`, the yellow Intercom gives notes.
+- **Colours are named by DaisyUI's twenty semantic names, as they are**, in one palette. Its type is public in `app`, per ADR 0012, so every tab paints with the same roles; the Catppuccin values and the background detection live in `internal/ui`. No other code names a colour; a screen picks a role, and an internal note, for instance, uses `warning`, the yellow Intercom gives notes.
 - **The built-in theme is Catppuccin, in true colour**: Latte on a light background and Mocha on a dark one. Its colours come from `github.com/catppuccin/go`, as in huh, rather than hex values copied into the code.
 - **The roles map onto Catppuccin's names**, which are the same in both flavours:
 
