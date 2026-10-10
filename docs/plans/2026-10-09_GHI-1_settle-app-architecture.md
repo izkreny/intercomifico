@@ -23,6 +23,7 @@ Every settled decision becomes its own ADR in `docs/adr/` (new), in Michael Nyga
 - Settle the debug log and record it as an ADR.
 - Settle the UI architecture and package layout and record them as an ADR.
 - Settle tabs and the public contract an outside build implements to add its own, and record them as an ADR.
+- Settle how pickers open as dialogs and record it as an ADR.
 - Settle theming and record it as an ADR.
 - Add `docs/adr/README.md` (new), indexing every ADR with its status, as the entry point later issues link to.
 - Add `AGENTS.md` (new), pointing agents at the ADRs and at the reference clones: Charm's own repositories as canonical, community apps for ideas, and Intercom's OpenAPI description and SDKs.
