@@ -23,7 +23,7 @@ Intercom answers an error with a body holding a `request_id` and a list of error
 - **Each day has its own file**, named by its date, such as `debug-2026-10-10.log`, which every run that day appends to, so the run that failed survives any number of restarts.
 - **A size check runs at start and whenever the date changes while the app runs**, whether or not the log is on: when the `logs` folder holds more than 1 GB, the app says so and offers, in a dialog per ADR 0013, to delete every log file but today's and yesterday's. Declining keeps them all, and the next check asks again.
 - **It records metadata only:**
-  - at start: the app's version, Go's version, OS and architecture, the colour profile and background bubbletea detected, the window size, and each setting's value and where it came from, with the token reported only as present or absent;
+  - at start: the app's version, Go's version, OS and architecture, the colour profile bubbletea detected, the window size, and each setting's value and where it came from, with the token reported only as present or absent;
   - per API request: the method, the endpoint as its pattern (`/conversations/{id}`), the status, the duration, the response size, the rate-limit headers, and on an error its `request_id` and error codes;
   - per poll tick and reference-data refresh: what ran, how long it took, how many records came back, and any tick skipped because the previous one was still running;
   - per user action (reply, note, saved reply, snooze, assign, close, queue switch): which action, and whether it succeeded;
