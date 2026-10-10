@@ -19,8 +19,9 @@ Intercom answers an error with a body holding a `request_id` and a list of error
 ## Decision
 
 - **The app keeps a debug log, off by default.** The `debug_log` setting (`INTERCOMIFICO_DEBUG_LOG`) turns it on, a boolean defaulting to `false`, with the precedence ADR 0004 sets: the settings file turns it on for every run, the environment for one.
-- **It is written with the standard library's `log/slog`** as JSON lines, to `$XDG_STATE_HOME/intercomifico/debug.log` (falling back to `~/.local/state`), beside UI state per ADR 0007.
-- **Each start moves the previous log to `debug.log.1`**, so a log left on cannot grow without bound and the run that failed survives one restart.
+- **It is written with the standard library's `log/slog`** as JSON lines, into a `logs` folder in `$XDG_STATE_HOME/intercomifico/` (falling back to `~/.local/state`), beside UI state per ADR 0007.
+- **Each day has its own file**, named by its date, such as `debug-2026-10-10.log`, which every run that day appends to, so the run that failed survives any number of restarts.
+- **A size check runs at start and whenever the date changes while the app runs**, whether or not the log is on: when the `logs` folder holds more than 1 GB, the app says so and offers, in a dialog per ADR 0013, to delete every log file but today's and yesterday's. Declining keeps them all, and the next check asks again.
 - **It records metadata only:**
   - at start: the app's version, Go's version, OS and architecture, the colour profile and background bubbletea detected, the window size, and each setting's value and where it came from, with the token reported only as present or absent;
   - per API request: the method, the endpoint as its pattern (`/conversations/{id}`), the status, the duration, the response size, the rate-limit headers, and on an error its `request_id` and error codes;

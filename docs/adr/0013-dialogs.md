@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Three v1 actions ask the user to pick one item from a list: inserting a saved reply (ADR 0005), assigning a conversation to me, a teammate or a team, and snoozing it until a chosen time (ADR 0002). Each needs room for its list while the conversation it acts on stays in view.
+Several v1 actions ask the user to pick one item from a list: inserting a saved reply (ADR 0005), assigning a conversation to me, a teammate or a team, snoozing it until a chosen time (ADR 0002), and deciding whether to clean up oversized logs (ADR 0011). Each needs room for its list while the conversation it acts on stays in view.
 
 Bubble Tea has no modal concept; a dialog is the app's own state. The Charm libraries supply the drawing:
 
@@ -28,7 +28,8 @@ Three other shapes were weighed: a picker that takes over a pane, which hides th
 - **The v1 dialogs are pickers**, each a filterable bubbles `list`:
   - saved replies, listed and inserted per ADR 0005;
   - assign, listing me first, then teammates and teams from the reference data of ADR 0004;
-  - snooze, listing preset times that its implementation issue sets.
+  - snooze, listing preset times that its implementation issue sets;
+  - log cleanup, offering to delete every log file but today's and yesterday's, or to keep them all, per ADR 0011.
 
 ## Consequences
 

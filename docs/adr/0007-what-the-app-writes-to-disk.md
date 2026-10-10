@@ -25,7 +25,7 @@ The app fetches conversations, contacts, admins, teams and saved replies from In
 - **The only files the app may ever use are its own:**
   - settings in `$XDG_CONFIG_HOME/intercomifico/settings.toml` (falling back to `~/.config` when the variable is unset), written by the user and only ever read by the app;
   - UI state, such as the last open queue, in `$XDG_STATE_HOME/intercomifico/` (falling back to `~/.local/state`), written by the app;
-  - the debug log in the same directory, holding metadata only, per ADR 0011.
+  - the debug logs in a `logs` folder of the same directory, holding metadata only, per ADR 0011.
 - **v1 reads the settings file**, with the precedence ADR 0004 sets, writes the debug log when it is turned on, and keeps no UI state.
 
 ## Consequences
