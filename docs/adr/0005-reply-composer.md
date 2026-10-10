@@ -1,0 +1,34 @@
+> 🤖 Written by AI --- read/modified by izkreny! 🤓
+
+# 5. Reply composer
+
+Date: 2026-10-09
+
+## Status
+
+Accepted
+
+## Context
+
+How comparable apps compose text:
+
+- gh-dash comments through its `inputbox` component, a wrapper around the bubbles textarea: `ctrl+d` submits, `esc` cancels, and no external editor is involved.
+- crush composes in a bubbles textarea where `enter` sends and `shift+enter` or `ctrl+j` adds a newline, with `ctrl+o` opening an external editor as an extra.
+- A classic terminal sends `ctrl+enter` as a plain `enter`. Bubble Tea v2 asks the terminal for key disambiguation by default, per the `KeyboardEnhancements` docs in `github.com/charmbracelet/bubbletea`, and reports what it got in a `tea.KeyboardEnhancementsMsg`, so `ctrl+enter` is a distinct key only where the terminal supports that.
+- The bubbles textarea (`charm.land/bubbles/v2/textarea`) is a multi-line input with word wrap, cursor movement, paste and a configurable key map. It binds many control keys itself, `ctrl+n`, `ctrl+d` and `ctrl+e` among them.
+
+## Decision
+
+- **v1 composes replies and notes in a bubbles textarea inside the app, and nowhere else.** No external editor and no subprocess.
+- `enter` inserts a newline, since support replies are usually several lines. `ctrl+enter` sends, and `ctrl+s` sends too, so a terminal without key disambiguation can still send. Sending is never implicit.
+- **Drafts belong to conversations.** The composer keeps one draft per conversation id, in memory, and opening another conversation shows that conversation's own draft, empty if it has none. A send always goes to the conversation the draft belongs to.
+- Leaving the composer keeps its draft. Nothing the user typed is discarded without an explicit action.
+- The composer shows whether it holds a public reply or an internal note, and switching between them keeps the text.
+- **A saved-reply picker inserts an Intercom macro** at the cursor, listing the macros available to the acting admin per their `visible_to`. Placeholders are filled where the app holds the data, from the contact and the acting admin; any other placeholder stays visible in the text for the user to edit before sending.
+- The remaining key bindings are set in the composer's implementation issue and checked against the textarea's own bindings, so none of them is shadowed.
+
+## Consequences
+
+- Composing works the same in every terminal and needs no editor configuration.
+- Long replies are less comfortable than in a real editor. Opening `$VISUAL` or `$EDITOR` on the draft, with the conversation history below a cut line as `git commit` does, is the planned extension, and it gets its own ADR when it is picked up.
+- With no subprocess, customer text never passes through a shell or a temporary file.
