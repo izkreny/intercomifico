@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Several v1 actions ask the user to pick one item from a list: inserting a saved reply (ADR 0005), assigning a conversation to me, a teammate or a team, snoozing it until a chosen time (ADR 0002), and deciding whether to clean up oversized logs (ADR 0011). Each needs room for its list while the conversation it acts on stays in view.
+Several v1 actions ask the user to pick one item from a list: inserting a saved reply (ADR 0005), assigning a conversation to me, a teammate or a team, snoozing it until a chosen time (ADR 0002), and deciding whether to clean up oversized logs (ADR 0011). Each needs room for its list while what it acts on stays in view.
 
 Bubble Tea has no modal concept; a dialog is the app's own state. The Charm libraries supply the drawing:
 
@@ -21,10 +21,10 @@ Three other shapes were weighed: a picker that takes over a pane, which hides th
 
 ## Decision
 
-- **A dialog is a box drawn over its tab's own view** with lipgloss layers, centred and sized to the tab's area, with a maximum width. It covers the tab only, never the tab bar, since the tab of ADR 0012 that opened it owns it.
+- **A dialog is a box drawn over the view of whoever opened it** with lipgloss layers, centred and sized to that area, with a maximum width. A tab's dialog covers that tab only, never the tab bar, since the tab of ADR 0012 that opened it owns it; a dialog about the whole app, such as log cleanup, belongs to the frame and covers the whole screen.
 - **An open dialog is a value of the focus field** from ADR 0008, so every key goes to the dialog and none to the panes behind it. `esc` closes it with no effect; confirming closes it and hands the choice to the tab as a message.
 - **One dialog is open at a time.** No v1 action opens a dialog from a dialog.
-- **A dialog acts on the conversation it was opened for**, by id, as a draft does under ADR 0005, even when polling changes what is on screen behind it.
+- **A dialog about a conversation acts on the conversation it was opened for**, by id, as a draft does under ADR 0005, even when polling changes what is on screen behind it.
 - **The v1 dialogs are pickers**, each a filterable bubbles `list`:
   - saved replies, listed and inserted per ADR 0005;
   - assign, listing me first, then teammates and teams from the reference data of ADR 0004;
