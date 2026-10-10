@@ -27,10 +27,11 @@ Besides the compiler, Charm's own repositories rely on three tools: a formatter,
   - `task lint` runs the linters.
   - `task test` runs `go vet ./...` and `go test -race ./...`.
   - `task audit` runs `govulncheck ./...`.
+  - `task ci` runs every gate in order and stops at the first that fails: `golangci-lint fmt --diff`, which prints what formatting would change and exits non-zero if anything would, then `task lint`, `task audit` and `task test`.
   - `task test:update` rewrites golden files with `go test ./internal/ui/... -update`, per ADR 0006.
   - `task run` starts the app.
 - **A project-local mise.toml pins the toolchain** at exact versions: Go 1.27.1, golangci-lint 2.14.0, task 3.54.0 and govulncheck 1.8.0 (through mise's `go` backend, as the mise registry does not carry it), the newest releases today.
-- **`task lint`, `task audit` and `task test` are the repository's gates**, locally and in CI; the CI issue runs them and adds nothing of its own.
+- **`task lint`, `task audit` and `task test` are the repository's gates**, with the formatting check run by `task ci`. `task ci` is the one command for all of them, locally and in CI; the CI issue runs it and adds nothing of its own.
 
 ## Consequences
 

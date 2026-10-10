@@ -18,6 +18,8 @@ Per ADRs 0006 and 0010, run from the repository root with the toolchain mise.tom
 - `task audit`
 - `task test`
 
+`task ci` runs the formatting check and all of these in order, stopping at the first failure.
+
 `task test:update` rewrites golden files after a deliberate rendering change. It is not a gate; the changed `.golden` files are reviewed in the diff.
 
 ## Docs check
