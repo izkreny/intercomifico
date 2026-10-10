@@ -27,6 +27,7 @@ v1 needs about ten REST endpoints, per ADR 0002. What Intercom offers, read from
 - **The region comes from `INTERCOMIFICO_REGION`**, one of `eu`, `us` or `au`, defaulting to `eu`, where the owner's workspace is hosted.
 - **The acting admin is resolved once at startup with `GET /me`**, and its id goes into every reply and conversation action.
 - **Queues are refreshed by polling** every `INTERCOMIFICO_POLL_INTERVAL` (a Go duration, default `2s`, `0` to disable): each tick re-runs the visible queue's search and refetches the open conversation with `GET /conversations/{id}`, whether or not the search still returns it, so a conversation closed, snoozed or reassigned elsewhere shows its new state.
+- **Reference data is refreshed on a slow timer**, so a session that runs for days stays current: every 15 minutes the app fetches the macros changed since its last fetch (`updated_since`) along with the admins and teams, and every hour it re-fetches all macros, so deleted ones disappear.
 - **A 429 becomes a typed error carrying the reset time.** Polling pauses until then, and a user action that hits it shows the error instead of retrying behind the user's back.
 
 The v1 endpoints:
@@ -40,7 +41,7 @@ The v1 endpoints:
 | Snooze, assign, close                | `POST /conversations/{id}/parts`, `message_type` `snoozed`, `assignment` or `close`            |
 | Customer panel                       | `GET /contacts/{id}`                                                                           |
 | Assignment targets                   | `GET /admins`, `GET /teams`                                                                    |
-| Saved replies                        | `GET /macros`, every page, once at startup                                                     |
+| Saved replies                        | `GET /macros`, every page at startup, then refreshed on the reference-data timer               |
 
 ## Consequences
 
