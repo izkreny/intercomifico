@@ -22,7 +22,7 @@ ADR 0006 tests behaviour by calling `Update` directly, which reaches the whole a
 - **The inbox tab is one model that handles every message reaching it**, following crush's conventions above. It sits inside the frame of ADR 0012, which is the app's only top-level model. The panes (queue list, conversation, composer, customer panel) are plain structs with methods; none has its own `Update`.
 - **Focus is one explicit field** with a value per pane, and every key press is routed by it, so a letter typed into the composer never triggers an action key.
 - **Layout follows `tea.WindowSizeMsg`**: pane sizes are computed from the terminal size, never fixed.
-- **Rendering composes strings with lipgloss.** crush's Ultraviolet screen buffer is not adopted in v1; it earns its place with overlays and mouse hit-testing that v1 does not have.
+- **Rendering composes strings with lipgloss**, dialogs included, which ADR 0013 draws as lipgloss layers. crush's Ultraviolet screen buffer is not adopted in v1; it earns its place with mouse hit-testing and stacked overlays that v1 does not have.
 - **Key bindings are a `key.Binding` key map** from `charm.land/bubbles/v2/key`, shown in a footer through `charm.land/bubbles/v2/help`.
 - **ANSI-aware string handling uses `github.com/charmbracelet/x/ansi`**, never byte slicing.
 - **The package layout:**
