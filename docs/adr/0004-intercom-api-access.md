@@ -46,7 +46,7 @@ The v1 endpoints:
 
 ## Consequences
 
-- Configuration in v1 is two settings in the settings file or the environment, plus the token in the environment only. Later settings, such as user-defined key bindings, join the same file and the same precedence.
+- Every setting but the token can live in the settings file or the environment; the token lives in the environment only. Later settings, such as user-defined key bindings, join the same file and the same precedence.
 - Two-second polling, one search and one conversation fetch a tick, is sixty calls a minute: under 1% of the 10,000 a minute each app may make, and of the 25,000 a minute the workspace shares across all its apps.
 - Intercom documents no freshness guarantee for conversation search, so a change made elsewhere shows up within one poll interval at best.
 - Which scopes the private app needs is only partly documented: "Read conversations" and "Write conversations", plus read access to admins and contacts. The first working build confirms the set, and the README records it.

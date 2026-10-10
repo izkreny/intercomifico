@@ -24,12 +24,13 @@ The app fetches conversations, contacts, admins, teams and saved replies from In
 - **The access token is never written anywhere**, per ADR 0004.
 - **The only files the app may ever use are its own:**
   - settings in `$XDG_CONFIG_HOME/intercomifico/settings.toml` (falling back to `~/.config` when the variable is unset), written by the user and only ever read by the app;
-  - UI state, such as the last open queue, in `$XDG_STATE_HOME/intercomifico/` (falling back to `~/.local/state`), written by the app.
-- **v1 reads the settings file**, with the precedence ADR 0004 sets, and keeps no UI state.
+  - UI state, such as the last open queue, in `$XDG_STATE_HOME/intercomifico/` (falling back to `~/.local/state`), written by the app;
+  - the debug log in the same directory, holding metadata only, per ADR 0011.
+- **v1 reads the settings file**, with the precedence ADR 0004 sets, writes the debug log when it is turned on, and keeps no UI state.
 
 ## Consequences
 
 - No customer or teammate data is left on the machine after the app exits, so the app has no data to secure, expire or delete.
 - Every start shows a short loading state while the first calls return.
 - UI state arrives with the first feature that needs it, through that feature's ADR and inside this decision.
-- Saving drafts across a crash, caching saved replies and a debug log are ruled out rather than deferred. Revisiting any of them means superseding this ADR.
+- Saving drafts across a crash and caching saved replies are ruled out rather than deferred. Revisiting any of them means superseding this ADR.
