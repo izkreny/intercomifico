@@ -16,10 +16,6 @@ The other axes keep their default labels (`bug`, `spike`, `epic`, `urgent`, `som
 
 None: the repository belongs to a personal account.
 
-## Branches and trunk
-
-The default branch format `{type}/GHI-{issue-number}_{slug}`, with the default types `feat`, `fix`, `refactor`, `docs` and `chore`. The trunk is `main` and the remote is `origin`.
-
 ## Check commands
 
 Per ADR 0006:
