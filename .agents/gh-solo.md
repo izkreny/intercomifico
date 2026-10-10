@@ -15,6 +15,7 @@ The default layer labels, mapped onto this repository:
 Per ADRs 0006 and 0010, run from the repository root with the toolchain mise.toml pins:
 
 - `task lint`
+- `task audit`
 - `task test`
 
 `task test:update` rewrites golden files after a deliberate rendering change. It is not a gate; the changed `.golden` files are reviewed in the diff.

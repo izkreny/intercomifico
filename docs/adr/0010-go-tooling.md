@@ -15,6 +15,7 @@ Besides the compiler, Charm's own repositories rely on three tools: a formatter,
 - 15 of Charm's 22 repositories share one configuration, the one in `github.com/charmbracelet/bubbletea`: golangci-lint v2, the standard linters plus 22 more (bodyclose, exhaustive, goconst, godot, gomoddirectives, goprintffuncname, gosec, misspell, nakedret, nestif, nilerr, noctx, nolintlint, prealloc, revive, rowserrcheck, sqlclosecheck, tparallel, unconvert, unparam, whitespace, wrapcheck), with gofumpt and goimports as formatters.
 - That shared configuration turns off linting of test files. crush, soft-serve and ultraviolet keep golangci-lint's default, which lints them, as most community apps do.
 - Community apps vary from no extra linters to 68, and their most frequent picks overlap Charm's set.
+- Go's own vulnerability scanner, `govulncheck` from `golang.org/x/vuln`, checks the modules a build uses against the Go vulnerability database at vuln.go.dev, and reports a vulnerability only where the code calls the affected function. golangci-lint's `gosec` reads this repository's own code, not its dependencies.
 - bubbletea, crush and glow run their commands through a Taskfile.yaml (go-task). mise tasks would do the same job from the mise.toml that pins the toolchain, at the cost of departing from Charm's convention.
 
 ## Decision
@@ -25,14 +26,16 @@ Besides the compiler, Charm's own repositories rely on three tools: a formatter,
   - `task fmt` formats the code.
   - `task lint` runs the linters.
   - `task test` runs `go vet ./...` and `go test -race ./...`.
+  - `task audit` runs `govulncheck ./...`.
   - `task test:update` rewrites golden files with `go test ./internal/ui/... -update`, per ADR 0006.
   - `task run` starts the app.
-- **A project-local mise.toml pins the toolchain** at exact versions: Go 1.27.1, golangci-lint 2.14.0 and task 3.54.0, the newest releases today.
-- **`task lint` and `task test` are the repository's gates**, locally and in CI; the CI issue runs them and adds nothing of its own.
+- **A project-local mise.toml pins the toolchain** at exact versions: Go 1.27.1, golangci-lint 2.14.0, task 3.54.0 and govulncheck 1.8.0 (through mise's `go` backend, as the mise registry does not carry it), the newest releases today.
+- **`task lint`, `task audit` and `task test` are the repository's gates**, locally and in CI; the CI issue runs them and adds nothing of its own.
 
 ## Consequences
 
 - Anyone working on the repository needs mise, which installs the rest from mise.toml.
+- `task audit` needs the network to reach the vulnerability database, so it is a task of its own rather than part of `task lint`, which runs offline.
 - A new codebase meets the strict rules from its first line, so there is no backlog of old warnings to suppress.
 - `exhaustive` flags a `switch` over an enum that misses a value, which guards the single `Update` and its focus field from ADR 0008.
 - Moving the tasks into mise.toml and dropping go-task can be reconsidered later, in a new ADR.

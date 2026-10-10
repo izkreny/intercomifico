@@ -34,4 +34,4 @@ In a terminal app the UI tests are cheap: `Update` is a function call and `View(
 - The test suite runs in seconds and needs no Intercom account, token or network.
 - Golden files make every rendering change visible in review, at the cost of updating them on purpose whenever the layout changes.
 - Nothing exercises the real Intercom API automatically. Recording real responses for replay, as crush does, is possible later and needs its own ADR, since it involves a real token and real customer data.
-- Linting is ADR 0010's, which adds `task lint` as the second gate.
+- Linting and the dependency audit are ADR 0010's, which adds `task lint` and `task audit` as gates beside it.
