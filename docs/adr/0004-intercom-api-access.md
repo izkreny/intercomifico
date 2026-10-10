@@ -40,10 +40,11 @@ The v1 endpoints:
 | Snooze, assign, close                | `POST /conversations/{id}/parts`, `message_type` `snoozed`, `assignment` or `close`            |
 | Customer panel                       | `GET /contacts/{id}`                                                                           |
 | Assignment targets                   | `GET /admins`, `GET /teams`                                                                    |
+| Saved replies                        | `GET /macros`, every page, once at startup                                                     |
 
 ## Consequences
 
-- Configuration in v1 is three environment variables. A config file arrives with its own ADR when something needs one, such as user-defined key bindings.
+- Configuration in v1 is three environment variables. Settings beyond them go in a TOML file the app only reads, per ADR 0007, once something needs one, such as user-defined key bindings.
 - Ten seconds of polling, one search and one conversation fetch a tick, is twelve calls a minute, far inside the rate limit.
 - Intercom documents no freshness guarantee for conversation search, so a change made elsewhere shows up within one poll interval at best.
 - Which scopes the private app needs is only partly documented: "Read conversations" and "Write conversations", plus read access to admins and contacts. The first working build confirms the set, and the README records it.

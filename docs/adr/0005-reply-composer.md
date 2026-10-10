@@ -26,6 +26,7 @@ How comparable apps compose text:
 - **Drafts belong to conversations.** The composer keeps one draft per conversation id, in memory, and opening another conversation shows that conversation's own draft, empty if it has none. A send always goes to the conversation the draft belongs to.
 - Leaving the composer keeps its draft. Nothing the user typed is discarded without an explicit action.
 - The composer shows whether it holds a public reply or an internal note, and switching between them keeps the text.
+- **A saved-reply picker inserts an Intercom macro** at the cursor, listing the macros available to the acting admin per their `visible_to`. Placeholders are filled where the app holds the data, from the contact and the acting admin; any other placeholder stays visible in the text for the user to edit before sending.
 - The remaining key bindings are set in the composer's implementation issue and checked against the textarea's own bindings, so none of them is shadowed.
 
 ## Consequences

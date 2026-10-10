@@ -25,10 +25,11 @@ v1 lets one teammate, in one workspace:
 - Browse three queues, each a conversation search: open conversations assigned to me, open unassigned conversations, and snoozed conversations assigned to me.
 - Read a conversation with its parts, next to a customer panel showing the contact's name, email and custom attributes.
 - Send a public reply or add an internal note.
+- Insert a saved reply (an Intercom macro) into the composer.
 - Snooze, assign (to me, another teammate or a team) and close a conversation.
 - See new activity by polling, at an interval the API decision sets.
 
-Out of v1: tickets, tags, attachments, saved replies (Intercom macros), SLA timers, free-text conversation search, more than one workspace, and real-time push through a webhook relay.
+Out of v1: tickets, tags, attachments, the user's own local saved replies, SLA timers, free-text conversation search, more than one workspace, and real-time push through a webhook relay.
 
 ## Consequences
 
