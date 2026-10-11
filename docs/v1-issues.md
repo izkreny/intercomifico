@@ -87,12 +87,13 @@ Read the token from the environment or the keyring, and the settings with the pr
 - [ ] A key the settings do not define, a misspelt one or a token, stops startup with a message naming the key and its line
 - [ ] The token is read from `INTERCOMIFICO_TOKEN` when it is set, and otherwise from the keyring entry whose `service` is `intercomifico` and whose `username` is `token`
 - [ ] With neither, startup stops with a message giving both ways to set the token, the `secret-tool store` command of ADR 0004 included
+- [ ] With `INTERCOMIFICO_TOKEN` unset and the keyring unreachable, startup stops with a message saying the keyring could not be reached, distinct from the one for a missing token
 - [ ] Each setting's value and source are available for the debug log's start-up record
 
 ### Technical notes
 
 - ADR 0004 for the settings and the token rule, ADR 0007 for where the file lives.
-- The keyring is read with `github.com/zalando/go-keyring`; its `MockInit` and `MockInitWithError` stand in for the keyring in tests, so they need no D-Bus.
+- The keyring is read with `github.com/zalando/go-keyring`; its `MockInit` and `MockInitWithError` stand in for the keyring in tests, so they need no D-Bus. It returns `ErrNotFound` for a missing entry; any other error means the keyring could not be reached.
 - The file is parsed with `github.com/pelletier/go-toml/v2`, its decoder set to `DisallowUnknownFields()`, per ADR 0004; `~/Projects/examples/go/go/pelletier_go-toml/` is the reference clone.
 
 ### Dependencies
