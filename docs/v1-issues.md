@@ -23,7 +23,7 @@ Create the Go module, the package layout and the tooling of ADR 0010, so every l
 - [ ] `task fmt`, `task lint`, `task test`, `task test:update`, `task audit`, `task ci` and `task run` exist and do what ADR 0010 says
 - [ ] `task lint` runs the linters and formatters of bubbletea's .golangci.yml, with test files linted
 - [ ] `task ci` runs the formatting check, `task lint`, `task test` and `task audit` in that order, and stops at the first failure
-- [ ] `task audit` fails on found vulnerabilities (exit 3); on a network error or its 60-second timeout it fails when `CI` is set and warns and passes otherwise
+- [ ] `task audit` fails on found vulnerabilities (exit 3); on any other error (exit 1) or its 60-second timeout it fails when `CI` is set, and otherwise warns of an unknown error and passes
 - [ ] Each gate has been seen failing once: an unformatted file, a lint error, a failing test
 - [ ] `.agents/gh-solo.md` records `task lint`, `task audit` and `task test` as the check commands, with `task ci` running them all
 
@@ -59,7 +59,7 @@ Run the repository's one gate command in CI, and make it required on `main`, so 
 
 ### Technical notes
 
-- ADR 0010: CI runs `task ci` and adds nothing; the audit fails on a network problem there because GitHub Actions sets `CI`.
+- ADR 0010: CI runs `task ci` and adds nothing; the audit fails on an unknown error there because GitHub Actions sets `CI`.
 - The spike's plan settled that this issue turns the gates into required status checks.
 
 ### Dependencies
