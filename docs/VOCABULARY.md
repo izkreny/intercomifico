@@ -358,7 +358,7 @@ A public message to the contact on a conversation, sent from the composer.
 
 ## role
 
-One of DaisyUI's twenty semantic colour names, such as `primary` or `base-100`, which a screen paints with. A contact's `role` field in Intercom is always written as the field.
+One of the twenty semantic names DaisyUI gives its colours, such as `primary` or `base-100`, which the app paints with. A contact's `role` field in Intercom is always written as the field.
 
 - **Source:** ADR 0009.
 - **Never:** colour name, slot, token.
@@ -400,7 +400,7 @@ A conversation's `state`: `open`, `snoozed` or `closed`.
 
 ## tab
 
-A screen inside the frame that implements `app.Tab`: the inbox, or an extra tab.
+What the frame holds and switches between, implementing `app.Tab`: the inbox, or an extra tab.
 
 - **Source:** ADR 0012.
 - **Never:** page, screen, view, plugin.
@@ -421,7 +421,7 @@ A command in Taskfile.yaml, run as `task <name>`.
 
 ## team
 
-A group of admins, which a conversation can be assigned to.
+A set of admins, which a conversation can be assigned to.
 
 - **Source:** Intercom, the `team` schema.
 - **Never:** group, squad.
