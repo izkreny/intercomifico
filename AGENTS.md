@@ -17,7 +17,7 @@ The toolchain is pinned in mise.toml and every command is a task in Taskfile.yam
 ## Rules
 
 - **Load the `go-style` skill before writing Go.** It holds the judgement the linters cannot check, and the ADRs and the linter configuration win wherever it differs from them. For UI work, crush's Bubble Tea rules, named under *Reference code*, apply on top of it.
-- **Use only the terms in `docs/VOCABULARY.md`** in code identifiers, docs, issues, commits and UI text, and never a name it lists under **Never**. A branch that needs a term the file lacks adds it there in the same PR rather than coining one in passing, per ADR 0015.
+- **Use only the terms in `docs/VOCABULARY.md`** in code identifiers, docs, issues, commits and UI text, and never call a concept by a name its entry lists under **Never**. A branch that needs a term the file lacks adds it there in the same PR rather than coining one in passing, per ADR 0015.
 - **Never edit a golden file by hand.** Regenerate it with `task test:update` and review the changed `.golden` files in the diff.
 - **Trust the ADRs and the reference clones over memory.** bubbletea v2, at `charm.land/bubbletea/v2` with bubbles and lipgloss beside it, is newer than most training data, and many clones below are still on v1: check a clone's go.mod before copying from it.
 - **Search the reference clones, never read them whole.** Some are hundreds of megabytes; grep for the symbol or pattern and read the files it finds.

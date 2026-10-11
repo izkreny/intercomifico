@@ -2,7 +2,7 @@
 
 # Vocabulary
 
-The project's terms, one name per concept. Code identifiers, docs, issues, commits and UI text use these names and none of the ones listed under **Never**. A branch that needs a term this file lacks adds it here in the same pull request, per ADR 0015.
+The project's terms, one name per concept. Code identifiers, docs, issues, commits and UI text use these names, and never call a concept by a name its entry lists under **Never**; such a name may still be another entry's term or a fixed identifier, as `app` is a package and `comment` an Intercom value. A branch that needs a term this file lacks adds it here in the same pull request, per ADR 0015.
 
 A term Intercom's API defines takes Intercom's name, and its source names the schema in Intercom's OpenAPI description 2.16 (`github.com/intercom/Intercom-OpenAPI`, `descriptions/2.16`). General English, Go's own terms and the Charm libraries' names are not listed; their own docs define them.
 
