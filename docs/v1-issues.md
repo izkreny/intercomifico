@@ -357,7 +357,7 @@ The opt-in, metadata-only debug log of ADR 0011, and the clean-up offer when the
 
 - [ ] With `debug_log` off no log file is created; with it on, `log/slog` JSON lines go to one file per day in the `logs` folder under `$XDG_STATE_HOME/intercomifico/`, appended by every run that day
 - [ ] It records what ADR 0011 lists: the start-up record, each API request, each poll tick and reference-data refresh, each user action, and each error shown
-- [ ] A test runs requests carrying known message text, names, emails, ids and a token through the log, and finds none of them in its output
+- [ ] A test runs requests carrying known message text, names, emails, conversation and contact ids and a token through the log, and finds none of them in its output, while an error's `request_id` is there
 - [ ] At start and whenever the date changes, a `logs` folder over 1 GB opens a frame dialog offering to delete every log file but today's and yesterday's, or to keep them all
 
 ### Technical notes

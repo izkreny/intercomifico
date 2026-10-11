@@ -28,7 +28,7 @@ Intercom answers an error with a body holding a `request_id` and a list of error
   - per poll tick and reference-data refresh: what ran, how long it took, how many records came back, and any tick skipped because the previous one was still running;
   - per user action (reply, note, saved reply, snooze, assign, close, queue switch): which action, and whether it succeeded;
   - every error the app shows the user, by type.
-- **It never records** request or response bodies, message or note text, error messages, key presses, saved-reply contents, names, emails, any Intercom id, or the token. An id is pseudonymous personal data under GDPR once anyone with access to the workspace can look it up, so the endpoint pattern stands in for it.
+- **It never records** request or response bodies, message or note text, error messages, key presses, saved-reply contents, names, emails, the id of any conversation, contact, admin, team or conversation part, or the token. Such an id is pseudonymous personal data under GDPR once anyone with access to the workspace can look it up, so the endpoint pattern stands in for it. Intercom's `request_id` names a request rather than a person, so it is recorded.
 
 ## Consequences
 
