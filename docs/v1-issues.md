@@ -51,7 +51,7 @@ Run the repository's one gate command in CI, and make it required on `main`, so 
 ### Acceptance criteria
 
 - [ ] A workflow on every push and pull request installs the toolchain from mise.toml and runs `task ci`, adding no check of its own
-- [ ] A scheduled daily workflow runs `task audit` on `main`
+- [ ] A workflow scheduled weekly, on Monday morning, runs `task audit` on `main`
 - [ ] The `task ci` job is a required status check on `main`
 - [ ] A pull request carrying a lint error shows the check red
 
