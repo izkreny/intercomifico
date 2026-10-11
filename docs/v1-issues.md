@@ -418,6 +418,7 @@ A `go-style` agent skill that teaches the Go practice golangci-lint cannot check
 
 ### Technical notes
 
+- ADR 0014 records this decision.
 - `~/Projects/examples/go/go/uber-go_guide` is the local copy of Uber's guide; the other sources are on go.dev and google.github.io.
 - Bubble Tea's own rules stay out of this skill: they are `~/Projects/examples/go/charm/charmbracelet_crush/internal/ui/AGENTS.md`, which AGENTS.md already points at.
 

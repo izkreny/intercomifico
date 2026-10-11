@@ -19,3 +19,4 @@ Every decision behind how Intercomifico is built, one per file, in the format AD
 | [0011](0011-debug-log.md)                             | Debug log                      | Accepted |
 | [0012](0012-tabs.md)                                  | Tabs                           | Accepted |
 | [0013](0013-dialogs.md)                               | Dialogs                        | Accepted |
+| [0014](0014-go-style-for-agents.md)                   | Go style for agents            | Accepted |
