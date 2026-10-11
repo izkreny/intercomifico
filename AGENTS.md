@@ -4,11 +4,11 @@ A terminal client for Intercom customer conversations, written in Go on the Char
 
 ## Decisions
 
-Every architecture decision is an ADR in `docs/adr/`, indexed in `docs/adr/README.md`. Read the ADRs a task touches before writing code for it. Work that needs a decision no ADR holds gets that ADR first, per ADR 0001.
+Every architecture decision is an ADR in `docs/adr/`, indexed in `docs/adr/README.md`. Read the ADRs a task touches before writing code for it. Work that needs a decision no ADR holds gets that ADR first.
 
 ## Commands
 
-The toolchain is pinned in mise.toml and every command is a task in Taskfile.yaml, per ADR 0010:
+The toolchain is pinned in mise.toml and every command is a task in Taskfile.yaml:
 
 - `mise install` installs the toolchain.
 - `task ci` runs every gate in order: the formatting check, lint, tests and the dependency audit. Run it before every push.
@@ -31,7 +31,7 @@ Local clones of upstream repositories live under `~/Projects/examples/`. Each fo
 - **Go: `~/Projects/examples/go/go/`.** Widely used, actively maintained Go projects outside the Charm stack, for how idiomatic Go is written; check them for code that is not UI, and prefer them over memory. Look first, by need:
   - Language and style: `golang_go` (the standard library), `golang_tools`, `golang_example`, `uber-go_guide`.
   - HTTP API clients, models for `internal/intercom`: `google_go-github`, `stripe_stripe-go`, `cli_cli`.
-  - Extension through compiled-in modules, as ADR 0012 adopts: `caddyserver_caddy`, `coredns_coredns`; other extension models: `hashicorp_go-plugin`, `traefik_traefik`.
+  - Extension through compiled-in modules, the model this app adopts: `caddyserver_caddy`, `coredns_coredns`; other extension models: `hashicorp_go-plugin`, `traefik_traefik`.
   - Terminal apps on other UI libraries, for ideas only: `jesseduffield_lazygit`, `derailed_k9s`, `junegunn_fzf`.
   - Libraries and tools this repository uses or may: `BurntSushi_toml`, `google_go-cmp`, `spf13_cobra`, `dominikh_go-tools`, `golangci_golangci-lint`, `go-task_task`, `goreleaser_goreleaser`.
   - The rest are well-built applications and servers to compare against.
