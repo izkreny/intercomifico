@@ -82,14 +82,14 @@ Read the token and the settings with the precedence of ADR 0004: built-in defaul
 - [ ] With `XDG_CONFIG_HOME` unset, the file is read from `~/.config/intercomifico/`
 - [ ] A missing settings file is not an error; a malformed one stops startup with a message naming the file and the problem
 - [ ] An invalid value stops startup with a message naming the setting and where it came from
-- [ ] A settings file containing a token stops startup
+- [ ] A key the settings do not define, a misspelt one or a token, stops startup with a message naming the key and its line
 - [ ] A missing `INTERCOMIFICO_TOKEN` stops startup with a message saying how to set it
 - [ ] Each setting's value and source are available for the debug log's start-up record
 
 ### Technical notes
 
 - ADR 0004 for the settings and the token rule, ADR 0007 for where the file lives.
-- No ADR names a TOML library; `~/Projects/examples/go/go/BurntSushi_toml/` is the reference clone. Choose one here and say why in the pull request.
+- The file is parsed with `github.com/pelletier/go-toml/v2`, its decoder set to `DisallowUnknownFields()`, per ADR 0004; `~/Projects/examples/go/go/pelletier_go-toml/` is the reference clone.
 
 ### Dependencies
 

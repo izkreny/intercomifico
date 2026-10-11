@@ -33,6 +33,6 @@ Local clones of upstream repositories live under `~/Projects/examples/`. Each fo
   - HTTP API clients, models for `internal/intercom`: `google_go-github`, `stripe_stripe-go`, `cli_cli`.
   - Extension through compiled-in modules, the model this app adopts: `caddyserver_caddy`, `coredns_coredns`; other extension models: `hashicorp_go-plugin`, `traefik_traefik`.
   - Terminal apps on other UI libraries, for ideas only: `jesseduffield_lazygit`, `derailed_k9s`, `junegunn_fzf`.
-  - Libraries and tools this repository uses or may: `BurntSushi_toml`, `google_go-cmp`, `spf13_cobra`, `dominikh_go-tools`, `golangci_golangci-lint`, `go-task_task`, `goreleaser_goreleaser`.
+  - Libraries and tools this repository uses or may: `pelletier_go-toml`, `google_go-cmp`, `spf13_cobra`, `dominikh_go-tools`, `golangci_golangci-lint`, `go-task_task`, `goreleaser_goreleaser`.
   - The rest are well-built applications and servers to compare against.
 - **Intercom: `~/Projects/examples/SDK/intercom/`.** `intercom_Intercom-OpenAPI` is Intercom's OpenAPI description and the authority on the REST API; the official developer docs at https://developers.intercom.com/ cover what it leaves out, such as authentication, rate limits and webhooks. The official SDKs beside it are models for `internal/intercom`, never dependencies.
