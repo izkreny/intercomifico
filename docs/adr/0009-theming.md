@@ -19,7 +19,7 @@ Two vocabularies are candidates for the role names:
 - **DaisyUI's semantic colours**, twenty names in pairs of a colour and the text drawn on it: `primary`, `secondary`, `accent`, `neutral`, `info`, `success`, `warning` and `error`, each with a `-content` partner, plus the surfaces `base-100`, `base-200` and `base-300` and their text, `base-content`.
 - **base16**: sixteen slots, `base00` to `base0F`, numbered rather than named, so code reading `base0D` says nothing about what it paints.
 
-WCAG 2.2 Level AA asks for a contrast ratio of at least 4.5:1 between normal text and its background. Catppuccin Mocha meets it for every pairing the mapping below makes, against all three of its base surfaces. Its light flavour, Latte, does not: several of its accents fall to about 2:1 against its own background. Of the light themes Ghostty bundles, few pass unmodified; Modus Operandi and GitHub Light Default are among them.
+WCAG 2.2 Level AA asks for a contrast ratio of at least 4.5:1 between normal text and its background. Catppuccin Mocha meets it, at 7:1 or better, for every pair of text and background the Decision below lists. Its light flavour, Latte, does not: several of its accents fall to about 2:1 against its own background. Of the light themes Ghostty bundles, few pass unmodified; Modus Operandi and GitHub Light Default are among them.
 
 ## Decision
 
@@ -40,14 +40,14 @@ WCAG 2.2 Level AA asks for a contrast ratio of at least 4.5:1 between normal tex
   | every other `-content`                                | Base                         |
 
 - **The app paints every cell it draws**, background included, from the base roles, and never shows the terminal's own background through. Mocha's pale text is unreadable on a light background, so on a light terminal the app is a dark window instead.
-- **A built-in theme meets WCAG 2.2 Level AA**, 4.5:1, for every pair of text and the background it is drawn on: `base-content` on each of `base-100`, `base-200` and `base-300`; each coloured role as text on each of those three; each `-content` on its own role; and `neutral-content` on `neutral`.
+- **A built-in theme meets WCAG 2.2 Level AA**, 4.5:1, for every pair of text and the background it is drawn on: `base-content` on each of `base-100`, `base-200` and `base-300`; each of `primary`, `secondary`, `accent`, `info`, `success`, `warning` and `error` as text on each of those three; each `-content` on its own role; and `neutral-content` on `neutral`, which is a surface and never text.
 - **Downsampling is bubbletea's**: a terminal without true colour gets the nearest colours its profile has, with no code of the app's own.
 - **Nerd Font icons come after v1**, through their own ADR. v1 draws with plain Unicode text.
 
 ## Consequences
 
 - The app looks the same in every true-colour terminal, whatever theme the terminal wears, and matches one running Catppuccin Mocha exactly.
-- A test checks every Mocha pairing against 4.5:1, so a palette change that breaks AA fails the build.
+- A test checks every pair the Decision lists against 4.5:1 in Mocha, so a palette change that breaks AA fails the build.
 - `github.com/catppuccin/go` is a dependency, the one huh uses for the same job.
 - DaisyUI dims text with opacity, which a terminal lacks; lipgloss's `Faint` attribute does that job, for text such as timestamps.
 - v1 asks the terminal nothing about its background, since one theme leaves nothing to choose.
