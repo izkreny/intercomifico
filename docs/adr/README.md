@@ -20,3 +20,4 @@ Every decision behind how Intercomifico is built, one per file, in the format AD
 | [0012](0012-tabs.md)                                  | Tabs                           | Accepted |
 | [0013](0013-dialogs.md)                               | Dialogs                        | Accepted |
 | [0014](0014-go-style-for-agents.md)                   | Go style for agents            | Accepted |
+| [0015](0015-project-vocabulary.md)                    | Project vocabulary             | Accepted |
