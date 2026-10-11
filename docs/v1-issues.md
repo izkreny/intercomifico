@@ -53,6 +53,7 @@ Run the repository's one gate command in CI, and make it required on `main`, so 
 - [ ] A workflow on every push and pull request installs the toolchain from mise.toml and runs `task ci`, adding no check of its own
 - [ ] A workflow scheduled weekly, on Monday morning, runs `task audit` on `main`
 - [ ] The `task ci` job is a required status check on `main`
+- [ ] Dependabot alerts are enabled on the repository, and no Dependabot version-update configuration exists
 - [ ] A pull request carrying a lint error shows the check red
 
 ### Technical notes

@@ -31,6 +31,7 @@ Besides the compiler, Charm's own repositories rely on three tools: a formatter,
   - `task test:update` rewrites golden files with `go test ./internal/ui/... -update`, per ADR 0006.
   - `task run` starts the app.
 - **A project-local mise.toml pins the toolchain** at exact versions: Go 1.27.1, golangci-lint 2.14.0, task 3.54.0 and govulncheck 1.8.0 (through mise's `go` backend, as the mise registry does not carry it), the newest releases today.
+- **Dependabot alerts are on, and Dependabot version updates are off.** GitHub flags a vulnerable Go module or Action from its advisory database without opening pull requests; every upgrade is an issue of its own, through the usual branch and pull request.
 - **`task lint`, `task audit` and `task test` are the repository's gates**, with the formatting check run by `task ci`. `task ci` is the one command for all of them, locally and in CI; the CI issue runs it and adds nothing of its own.
 
 ## Consequences
