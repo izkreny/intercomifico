@@ -1,0 +1,5 @@
+[tools]
+go = "1.27.1"
+"go:golang.org/x/vuln/cmd/govulncheck" = "1.8.0"
+golangci-lint = "2.14.0"
+task = "3.54.0"
