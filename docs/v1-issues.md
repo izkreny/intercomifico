@@ -76,7 +76,7 @@ Labels: `backend`. Milestone: `v1`. Blocked by: #14.
 
 ### Overview
 
-Read the token and the settings with the precedence of ADR 0004: built-in defaults, then the settings file, then environment variables.
+Read the token from the environment or the keyring, and the settings with the precedence of ADR 0004: built-in defaults, then the settings file, then environment variables.
 
 ### Acceptance criteria
 
@@ -85,12 +85,14 @@ Read the token and the settings with the precedence of ADR 0004: built-in defaul
 - [ ] A missing settings file is not an error; a malformed one stops startup with a message naming the file and the problem
 - [ ] An invalid value stops startup with a message naming the setting and where it came from
 - [ ] A key the settings do not define, a misspelt one or a token, stops startup with a message naming the key and its line
-- [ ] A missing `INTERCOMIFICO_TOKEN` stops startup with a message saying how to set it
+- [ ] The token is read from `INTERCOMIFICO_TOKEN` when it is set, and otherwise from the keyring entry whose `service` is `intercomifico` and whose `username` is `token`
+- [ ] With neither, startup stops with a message giving both ways to set the token, the `secret-tool store` command of ADR 0004 included
 - [ ] Each setting's value and source are available for the debug log's start-up record
 
 ### Technical notes
 
 - ADR 0004 for the settings and the token rule, ADR 0007 for where the file lives.
+- The keyring is read with `github.com/zalando/go-keyring`; its `MockInit` and `MockInitWithError` stand in for the keyring in tests, so they need no D-Bus.
 - The file is parsed with `github.com/pelletier/go-toml/v2`, its decoder set to `DisallowUnknownFields()`, per ADR 0004; `~/Projects/examples/go/go/pelletier_go-toml/` is the reference clone.
 
 ### Dependencies
