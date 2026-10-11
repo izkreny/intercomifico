@@ -295,9 +295,9 @@ A field in a macro's text that the app fills from the contact or the acting admi
 
 ## plan
 
-The branch's plan file in `docs/plans/`, committed alone as its first commit: how the issue will be done.
+A branch's plan file in `docs/plans/`, named by its date and issue: how the issue will be done, while the issue says what.
 
-- **Source:** `docs/plans/`.
+- **Source:** the plan files in `docs/plans/`, such as `docs/plans/2026-10-11_GHI-4_add-go-style-skill.md`.
 - **Never:** spec, design doc.
 
 ## poll tick
