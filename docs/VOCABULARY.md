@@ -92,7 +92,7 @@ Snooze, assign or close, applied to one conversation.
 
 ## conversation part
 
-One message or event in a conversation, such as a reply, a note or an assignment; "part" for short.
+One item in a conversation's history, such as a reply, a note or an assignment; "part" for short.
 
 - **Source:** Intercom, the `conversation_part` schema.
 - **Never:** message, entry.
@@ -239,7 +239,7 @@ The queue of conversations assigned to the acting admin, open ones first and sno
 
 ## note
 
-An internal message on a conversation that only admins see, drawn in the `warning` role.
+An internal conversation part that only admins see, drawn in the `warning` role.
 
 - **Source:** Intercom, `message_type` `note` on `POST /conversations/{id}/reply`; ADR 0005.
 - **Never:** comment, internal comment, private reply.
@@ -351,7 +351,7 @@ The `region` setting, `eu`, `us` or `au`, choosing Intercom's host.
 
 ## reply
 
-A public message to the contact on a conversation, sent from the composer.
+A public conversation part addressed to the contact, sent from the composer.
 
 - **Source:** Intercom, `message_type` `comment` on `POST /conversations/{id}/reply`; ADR 0005.
 - **Never:** comment, response, answer.
