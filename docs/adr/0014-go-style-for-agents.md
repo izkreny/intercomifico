@@ -12,7 +12,7 @@ Accepted
 
 Agents write most of this repository's Go. ADR 0010's linters enforce what a machine can check: formatting, imports, many of the rules in Go's Code Review Comments through `revive`, and classic bug patterns such as unchecked errors, unclosed response bodies and requests without a context. What they cannot check is judgement: how packages and interfaces are shaped, how errors are designed and wrapped, how goroutines and `context` cancellation are owned, and whether names and comments say anything.
 
-Go's published guides cover that judgement: Effective Go, Go's Code Review Comments, Google's Go Style Guide and Uber's Go guide. Several of the reference repositories hand their agents rules of this kind in an agent file; crush keeps its Bubble Tea rules in `~/Projects/examples/go/charm/charmbracelet_crush/internal/ui/AGENTS.md`, which AGENTS.md already points UI work at.
+Go's published guides cover that judgement: Effective Go, Go's Code Review Comments, Google's Go Style Guide and Uber's Go guide. Several of the reference repositories hand their agents rules of this kind in an agent file; crush keeps its Bubble Tea rules in '~/Projects/examples/go/charm/charmbracelet_crush/internal/ui/AGENTS.md', which AGENTS.md already points UI work at.
 
 ## Decision
 
