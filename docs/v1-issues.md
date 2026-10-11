@@ -68,7 +68,7 @@ Blocked by #1.
 
 ## 3. load the settings
 
-Labels: `backend`. Milestone: `v1`. Blocked by: #1.
+Labels: `backend`. Milestone: `v1`. Blocked by: #14.
 
 > 🤖 Written by AI --- read/modified by izkreny! 🤓
 
@@ -93,13 +93,13 @@ Read the token and the settings with the precedence of ADR 0004: built-in defaul
 
 ### Dependencies
 
-Blocked by #1.
+Blocked by #14, which follows #1.
 
 ---
 
 ## 4. add the intercom read client
 
-Labels: `backend`. Milestone: `v1`. Blocked by: #1.
+Labels: `backend`. Milestone: `v1`. Blocked by: #14.
 
 > 🤖 Written by AI --- read/modified by izkreny! 🤓
 
@@ -124,7 +124,7 @@ The read half of the hand-written Intercom client in `internal/intercom`: everyt
 
 ### Dependencies
 
-Blocked by #1.
+Blocked by #14, which follows #1.
 
 ---
 
@@ -389,3 +389,32 @@ A CONTRIBUTING.md for outside contributors, which GitHub links from the new-issu
 ### Dependencies
 
 None.
+
+---
+
+## 14. add the go style skill
+
+Labels: `infra`. Milestone: `v1`. Blocked by: #1.
+
+> 🤖 Written by AI --- read/modified by izkreny! 🤓
+
+### Overview
+
+A `go-style` agent skill that teaches the Go practice golangci-lint cannot check, so that every Go issue after the toolchain is written to it. The skill lives outside this repository; this issue's change here is the line in AGENTS.md that tells agents to load it.
+
+### Acceptance criteria
+
+- [ ] A `go-style` skill exists, distilled from Effective Go, Go's Code Review Comments, Google's Go Style Guide and Uber's Go guide
+- [ ] It covers what the linters of ADR 0010 do not enforce: package and interface design, error design, concurrency and `context`, and the quality of names and comments
+- [ ] It does not restate a rule golangci-lint already enforces
+- [ ] Where it differs from an ADR or from the linter configuration, the ADR and the configuration win, and the skill says so
+- [ ] AGENTS.md tells agents to load `go-style` before writing Go, with crush's Bubble Tea rules on top for UI work
+
+### Technical notes
+
+- `~/Projects/examples/go/go/uber-go_guide` is the local copy of Uber's guide; the other sources are on go.dev and google.github.io.
+- Bubble Tea's own rules stay out of this skill: they are `~/Projects/examples/go/charm/charmbracelet_crush/internal/ui/AGENTS.md`, which AGENTS.md already points at.
+
+### Dependencies
+
+Blocked by #1, so the skill is checked against the real linter configuration. #3 and #4 wait on it, and every later Go issue waits through them.
