@@ -20,6 +20,13 @@ The admin who owns the token, resolved once at start with `GET /me`; every reply
 - **Source:** ADR 0004.
 - **Never:** current user, logged-in admin.
 
+## active tab
+
+The tab in front, the one key presses reach.
+
+- **Source:** ADR 0012; #9.
+- **Never:** current tab, selected tab.
+
 ## admin
 
 An account with access to the workspace, which a conversation can be assigned to.
