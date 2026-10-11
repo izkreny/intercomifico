@@ -34,6 +34,13 @@ An architecture decision record in `docs/adr/`, in the format ADR 0001 sets, sup
 - **Source:** ADR 0001.
 - **Never:** design doc, RFC.
 
+## agent
+
+An AI coding agent working the repository under AGENTS.md.
+
+- **Source:** AGENTS.md; ADR 0014.
+- **Never:** bot, assistant.
+
 ## assign
 
 The conversation action that gives a conversation to an admin or a team, chosen in the assign picker.
