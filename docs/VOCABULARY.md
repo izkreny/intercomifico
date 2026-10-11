@@ -251,6 +251,13 @@ The conversation the inbox shows, refetched on every poll tick.
 - **Source:** ADR 0004; ADR 0012.
 - **Never:** current conversation, selected conversation, active conversation.
 
+## owner
+
+The repository's maintainer and only committer, whose review approves every pull request and every new term.
+
+- **Source:** ADR 0015; the open issues.
+- **Never:** maintainer, lead.
+
 ## palette
 
 The twenty roles with their colours, a public type in `app` sent to every tab at start.
