@@ -26,7 +26,7 @@ The reviewer of every pull request reads AGENTS.md as the repository's standards
 
 ## Consequences
 
-- A word missing from the vocabulary, or one listed under **Never**, becomes a review finding.
+- A word missing from the vocabulary, or a concept called by a name its entry lists under **Never**, becomes a review finding.
 - Every term is approved before it spreads, at the cost of one more file in the diff of the branch that needs it.
 - Older ADRs read with words the vocabulary has since ruled out, such as saved reply; their meaning is unchanged and the vocabulary names the term that replaced each.
 - General English, Go's terms and the Charm libraries' names stay out, so the list stays short enough to read whole.
