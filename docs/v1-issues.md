@@ -295,7 +295,7 @@ The dialog mechanism of ADR 0013, and its first dialog: a picker that inserts a 
 ### Acceptance criteria
 
 - [ ] A dialog draws over its owner's view with lipgloss layers: a tab's over that tab only, the frame's over the whole screen
-- [ ] While a dialog is open every key goes to it; `esc` closes it with no effect, and confirming closes it and hands the choice back as a message
+- [ ] While a dialog is open every key goes to it, the frame's included, which receives each key before any tab does; `esc` closes it with no effect, and confirming closes it and hands the choice as a message to whichever opened it
 - [ ] Only one dialog is open at a time
 - [ ] The saved-reply picker lists, filterably, the macros visible to the acting admin
 - [ ] Choosing one inserts it at the composer's cursor, with placeholders filled from the contact and the acting admin, and any other placeholder left visible

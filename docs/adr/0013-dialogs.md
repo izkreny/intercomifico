@@ -22,7 +22,7 @@ Three other shapes were weighed: a picker that takes over a pane, which hides th
 ## Decision
 
 - **A dialog is a box drawn over the view of whoever opened it** with lipgloss layers, centred and sized to that area, with a maximum width. A tab's dialog covers that tab only, never the tab bar, since the tab of ADR 0012 that opened it owns it; a dialog about the whole app, such as log cleanup, belongs to the frame and covers the whole screen.
-- **An open dialog is a value of the focus field** from ADR 0008, so every key goes to the dialog and none to the panes behind it. `esc` closes it with no effect; confirming closes it and hands the choice to the tab as a message.
+- **An open dialog takes every key until it closes.** A tab's dialog is a value of that tab's focus field from ADR 0008, so no key reaches the panes behind it; the frame's dialog sits in a slot the frame holds and checks before passing any key on, so no key reaches a tab. `esc` closes either with no effect; confirming closes it and hands the choice, as a message, to whichever of the tab or the frame opened it.
 - **One dialog is open at a time.** No v1 action opens a dialog from a dialog.
 - **A dialog about a conversation acts on the conversation it was opened for**, by id, as a draft does under ADR 0005, even when polling changes what is on screen behind it.
 - **The v1 dialogs are pickers**, each a filterable bubbles `list`:
