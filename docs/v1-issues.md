@@ -175,7 +175,7 @@ The frame every screen sits in: `Run`, the public tab contract in `app`, the tab
 - [ ] No global key is a plain letter; a key press reaches the active tab only, and every other message reaches every tab
 - [ ] Every tab gets the palette in a message at start
 - [ ] The Mocha palette maps onto the roles as ADR 0009's table says, and the frame paints every cell from the base roles
-- [ ] A test checks every Mocha pairing against 4.5:1 on each of the three base surfaces, and has been seen failing on a deliberately wrong colour
+- [ ] A test checks every text-on-background pair ADR 0009 lists against 4.5:1 in Mocha, and has been seen failing on a deliberately wrong colour
 - [ ] The help footer is drawn from the key map with bubbles `help`
 - [ ] Golden files cover the frame with one and with two stub tabs at a fixed size
 - [ ] The implementing agent proposes every key this issue adds (switching tabs, quitting, help), and the owner approves them before any is coded; each is checked against the textarea's own bindings so none is shadowed

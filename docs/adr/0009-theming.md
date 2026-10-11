@@ -40,7 +40,7 @@ WCAG 2.2 Level AA asks for a contrast ratio of at least 4.5:1 between normal tex
   | every other `-content`                                | Base                         |
 
 - **The app paints every cell it draws**, background included, from the base roles, and never shows the terminal's own background through. Mocha's pale text is unreadable on a light background, so on a light terminal the app is a dark window instead.
-- **A built-in theme meets WCAG 2.2 Level AA**: every pairing the mapping makes reaches 4.5:1 against each of the three base surfaces.
+- **A built-in theme meets WCAG 2.2 Level AA**, 4.5:1, for every pair of text and the background it is drawn on: `base-content` on each of `base-100`, `base-200` and `base-300`; each coloured role as text on each of those three; each `-content` on its own role; and `neutral-content` on `neutral`.
 - **Downsampling is bubbletea's**: a terminal without true colour gets the nearest colours its profile has, with no code of the app's own.
 - **Nerd Font icons come after v1**, through their own ADR. v1 draws with plain Unicode text.
 
