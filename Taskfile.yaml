@@ -1,0 +1,56 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  fmt:
+    desc: Format the code
+    cmds:
+      - golangci-lint fmt
+
+  lint:
+    desc: Run the linters
+    cmds:
+      - golangci-lint run
+
+  test:
+    desc: Vet the code and run the tests with the race detector
+    cmds:
+      - go vet ./...
+      - go test -race ./...
+
+  test:update:
+    desc: Rewrite the golden files
+    cmds:
+      - go test ./internal/ui/... -update
+
+  audit:
+    desc: Check the dependencies for known vulnerabilities
+    cmds:
+      # WHY: only exit 3 means vulnerabilities were found; any other failure is unknown, and outside CI it must not block offline work (ADR 0010).
+      - |
+        status=0
+        timeout 60 govulncheck ./... || status=$?
+        case "$status" in
+          0) ;;
+          3) exit 3 ;;
+          *)
+            if [ -n "${CI:-}" ]; then
+              exit "$status"
+            fi
+            echo "task audit: unknown error (exit $status), passing outside CI" >&2
+            ;;
+        esac
+
+  ci:
+    desc: Run every gate in order and stop at the first failure
+    cmds:
+      - golangci-lint fmt --diff
+      - task: lint
+      - task: test
+      - task: audit
+
+  run:
+    desc: Start the app
+    cmds:
+      - go run ./cmd/intercomifico
