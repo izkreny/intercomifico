@@ -12,7 +12,11 @@ The default layer labels, mapped onto this repository:
 
 ## Check commands
 
-None yet. The issue that sets up the Go toolchain records them here.
+- `task lint` runs the linters.
+- `task test` runs `go vet` and the tests with the race detector.
+- `task audit` checks the dependencies for known vulnerabilities.
+
+`task ci` runs them all in order, after the formatting check, and stops at the first failure. Run it before every push.
 
 ## Docs check
 
