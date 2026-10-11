@@ -28,6 +28,7 @@ Every settled decision becomes its own ADR in `docs/adr/` (new), in Michael Nyga
 - Add `docs/adr/README.md` (new), indexing every ADR with its status, as the entry point later issues link to.
 - Add `AGENTS.md` (new), pointing agents at the ADRs and at the reference clones: Charm's own repositories as canonical, community apps for ideas, and Intercom's OpenAPI description and SDKs.
 - Add `.agents/gh-solo.md` (new), recording the layer label set, the check commands from the tooling ADR, and the docs-check scope.
+- Add `CONTRIBUTING.md` (new), stating how AI-written contributions are handled.
 - Propose the first implementation issues from the accepted ADRs through the tracker's create flow.
 
 ## Verification
