@@ -28,7 +28,7 @@ Three other shapes were weighed: a picker that takes over a pane, which hides th
 - **The v1 dialogs are pickers**, each a filterable bubbles `list`:
   - saved replies, listed and inserted per ADR 0005;
   - assign, listing me first, then teammates and teams from the reference data of ADR 0004;
-  - snooze, listing preset times that its implementation issue sets;
+  - snooze, listing in 1 hour, in 4 hours, tomorrow at 9:00 and next Monday at 9:00, in the machine's local time;
   - log cleanup, offering to delete every log file but today's and yesterday's, or to keep them all, per ADR 0011.
 
 ## Consequences
@@ -36,5 +36,6 @@ Three other shapes were weighed: a picker that takes over a pane, which hides th
 - The conversation stays visible behind every picker.
 - Golden files capture an open dialog like any other view, per ADR 0006.
 - Polling keeps running while a dialog is open, so the view behind it can change underneath.
+- Snoozing until a date and time the user types needs an input field no picker has, so it comes after v1.
 - Inserting a saved reply from a trigger typed in the composer, with the same filterable list, is a later addition with its own ADR.
 - A dialog stack, mouse support or Ultraviolet each come with a new ADR, superseding the parts of this one and ADR 0008 they change.

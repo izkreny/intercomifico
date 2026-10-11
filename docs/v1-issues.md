@@ -325,7 +325,7 @@ Snooze, assign and close the open conversation, through pickers built on #10's d
 ### Acceptance criteria
 
 - [ ] An assign picker lists me first, then teammates and teams, and assigns the conversation to the choice
-- [ ] A snooze picker lists preset times, chosen in this issue, and snoozes the conversation until the choice
+- [ ] A snooze picker lists in 1 hour, in 4 hours, tomorrow at 9:00 and next Monday at 9:00, in the machine's local time, and snoozes the conversation until the choice
 - [ ] A close action closes the conversation
 - [ ] The queues show each change no later than the next poll
 - [ ] A failed action, a 429 included, shows its error and changes nothing on screen
