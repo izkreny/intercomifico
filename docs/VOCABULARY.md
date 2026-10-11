@@ -441,7 +441,7 @@ The access token of the private Intercom app, read from `INTERCOMIFICO_TOKEN` or
 
 ## UI state
 
-What the app may write about itself, such as the last open queue, under `$XDG_STATE_HOME/intercomifico/`; v1 keeps none.
+What the app may write about itself, such as the last visible queue, under `$XDG_STATE_HOME/intercomifico/`; v1 keeps none.
 
 - **Source:** ADR 0007.
 - **Never:** session, cache.
@@ -459,6 +459,13 @@ The person running the app, who acts in Intercom as the acting admin; never a co
 
 - **Source:** ADR 0002; ADR 0004; ADR 0005.
 - **Never:** operator, agent.
+
+## visible queue
+
+The queue the inbox shows, whose search each poll tick runs again.
+
+- **Source:** ADR 0004; #10.
+- **Never:** open queue, current queue, selected queue.
 
 ## workspace
 
