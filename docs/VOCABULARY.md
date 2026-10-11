@@ -260,7 +260,7 @@ The conversation the inbox shows, refetched on every poll tick.
 
 ## owner
 
-The repository's maintainer and only committer, whose review approves every pull request and every new term.
+The person who owns the repository and is its only committer, whose review approves every pull request and every new term.
 
 - **Source:** ADR 0015; the open issues.
 - **Never:** maintainer, lead.
