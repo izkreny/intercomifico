@@ -1,6 +1,6 @@
 # Intercomifico
 
-A terminal client for Intercom customer conversations, written in Go on the Charm stack (bubbletea, bubbles, lipgloss).
+A terminal client for Intercom customer conversations, written in Go on the Charm v2 stack (bubbletea, bubbles, lipgloss).
 
 ## Decisions
 
@@ -25,7 +25,7 @@ The toolchain is pinned in mise.toml and every command is a task in Taskfile.yam
 Local clones of upstream repositories live under `~/Projects/examples/`. Each folder is named `<owner>_<repo>` after its GitHub repository, so `charmbracelet_bubbletea` is `github.com/charmbracelet/bubbletea`.
 
 - **Canonical: `~/Projects/examples/go/charm/charmbracelet_*/`.** Charm's own repositories, and the authority on how the Charm libraries are meant to be used. Check them before writing UI code, and prefer them over community apps and over memory.
-  - The libraries' own `examples/` directories and `charmbracelet_crush` (a large real v2 app) are the first places to look.
+  - The libraries' own 'examples/' directories and `charmbracelet_crush` (a large real v2 app) are the first places to look.
   - Before any UI work, read `~/Projects/examples/go/charm/charmbracelet_crush/internal/ui/AGENTS.md`. IMPORTANT NOTE: we do not use its Ultraviolet sections.
 - **Community apps: every other folder in `~/Projects/examples/go/charm/`.** Real bubbletea apps, for ideas only; `dlvhdr_gh-dash` is the closest to this app's shape. The folder is not split by Charm version, so v1 and v2 apps sit side by side; `grep -l 'charm.land/bubbletea/v2' ~/Projects/examples/go/charm/*/go.mod` lists the apps on v2.
 - **Go: `~/Projects/examples/go/go/`.** Widely used, actively maintained Go projects outside the Charm stack, for how idiomatic Go is written; check them for code that is not UI, and prefer them over memory. Look first, by need:

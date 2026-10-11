@@ -177,6 +177,7 @@ The frame every screen sits in: `Run`, the public tab contract in `app`, the tab
 - [ ] A test checks every Mocha pairing against 4.5:1 on each of the three base surfaces, and has been seen failing on a deliberately wrong colour
 - [ ] The help footer is drawn from the key map with bubbles `help`
 - [ ] Golden files cover the frame with one and with two stub tabs at a fixed size
+- [ ] The implementing agent proposes every key this issue adds (switching tabs, quitting, help), and the owner approves them before any is coded; each is checked against the textarea's own bindings so none is shadowed
 
 ### Technical notes
 
@@ -204,10 +205,11 @@ The inbox tab's queue list, kept current by polling: the first build that shows 
 - [ ] A loading state shows until the first calls return
 - [ ] Every `poll_interval` the visible queue's search runs again; `0` turns polling off
 - [ ] Admins, teams and macros are fetched at start and refreshed every 15 minutes (macros through `updated_since`), with every macro fetched again each hour
-- [ ] A refresh key runs a poll and the reference-data refresh at once and restarts both timers
+- [ ] The refresh key runs a poll and the reference-data refresh at once and restarts both timers
 - [ ] A 429 pauses polling until its reset time and says so on screen
 - [ ] The layout follows the window size, and golden files cover both queues, the loading state and the 429 notice
 - [ ] The README lists the scopes the private Intercom app needs, confirmed against a real workspace
+- [ ] The implementing agent proposes every key this issue adds (switching queues, the refresh key), and the owner approves them before any is coded; each is checked against the textarea's own bindings so none is shadowed
 
 ### Technical notes
 
@@ -238,6 +240,7 @@ Opening a conversation from a queue shows its parts and the customer panel.
 - [ ] Every tab receives the open-contact message when the open conversation changes, and a message with no contact when none is open
 - [ ] The focus field routes keys between the queue list, the conversation and the customer panel
 - [ ] Golden files cover a conversation with a note and the customer panel
+- [ ] The implementing agent proposes every key this issue adds (moving focus between panes, scrolling), and the owner approves them before any is coded; each is checked against the textarea's own bindings so none is shadowed
 
 ### Technical notes
 
@@ -265,8 +268,8 @@ Write and send a public reply or an internal note from a bubbles textarea, with 
 - [ ] The composer shows whether it holds a reply or a note, and switching keeps the text
 - [ ] Each conversation keeps its own draft in memory; opening another conversation shows that one's draft, and leaving the composer keeps it
 - [ ] A send goes to the conversation the draft belongs to; a failed send keeps the draft and shows the error
-- [ ] The composer's key bindings are checked against the textarea's own, so none is shadowed
 - [ ] Tests cover sending, the reply/note switch and drafts across conversations through `Update`, plus golden files
+- [ ] The implementing agent proposes every key this issue adds (the reply/note switch and every binding beyond `enter`, `ctrl+enter` and `ctrl+s`), and the owner approves them before any is coded; each is checked against the textarea's own bindings so none is shadowed
 
 ### Technical notes
 
@@ -297,6 +300,7 @@ The dialog mechanism of ADR 0013, and its first dialog: a picker that inserts a 
 - [ ] Choosing one inserts it at the composer's cursor, with placeholders filled from the contact and the acting admin, and any other placeholder left visible
 - [ ] A dialog about a conversation acts on the conversation it was opened for, even when polling changes the screen behind it
 - [ ] Golden files cover the open picker
+- [ ] The implementing agent proposes every key this issue adds (opening the picker), and the owner approves them before any is coded; each is checked against the textarea's own bindings so none is shadowed
 
 ### Technical notes
 
@@ -326,6 +330,7 @@ Snooze, assign and close the open conversation, through pickers built on #10's d
 - [ ] The queues show each change no later than the next poll
 - [ ] A failed action, a 429 included, shows its error and changes nothing on screen
 - [ ] Golden files cover both pickers
+- [ ] The implementing agent proposes every key this issue adds (assign, snooze, close), and the owner approves them before any is coded; each is checked against the textarea's own bindings so none is shadowed
 
 ### Technical notes
 
