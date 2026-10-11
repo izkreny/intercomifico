@@ -25,6 +25,7 @@ Create the Go module, the package layout and the tooling of ADR 0010, so every l
 - [ ] `task ci` runs the formatting check, `task lint`, `task test` and `task audit` in that order, and stops at the first failure
 - [ ] `task audit` fails on found vulnerabilities (exit 3); on a network error or its 60-second timeout it fails when `CI` is set and warns and passes otherwise
 - [ ] Each gate has been seen failing once: an unformatted file, a lint error, a failing test
+- [ ] `.agents/gh-solo.md` records `task lint`, `task audit` and `task test` as the check commands, with `task ci` running them all
 
 ### Technical notes
 
