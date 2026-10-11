@@ -2,7 +2,7 @@
 
 # Proposed v1 issues
 
-The breakdown of v1 into issues, proposed through the tracker's create flow and committed for review only: this file is deleted before the pull request merges, once the issues exist. Each section below is one issue: its title, labels, milestone and blockers, then the body as it will be posted, its headings one level deeper here than on GitHub. A `#n` in a body means row n here; the real issue numbers are assigned at creation.
+The breakdown of v1 into issues, plus one issue outside the v1 milestone, proposed through the tracker's create flow and committed for review only: this file is deleted before the pull request merges, once the issues exist. Each section below is one issue: its title, labels, milestone and blockers, then the body as it will be posted, its headings one level deeper here than on GitHub. A `#n` in a body means row n here; the real issue numbers are assigned at creation.
 
 ---
 
@@ -361,3 +361,31 @@ The opt-in, metadata-only debug log of ADR 0011, and the clean-up offer when the
 ### Dependencies
 
 Blocked by #3 and #10.
+
+---
+
+## 13. add a contributing guide
+
+Labels: `docs`. Milestone: none. Blocked by: none.
+
+> 🤖 Written by AI --- read/modified by izkreny! 🤓
+
+### Overview
+
+A CONTRIBUTING.md for outside contributors, which GitHub links from the new-issue and new-pull-request pages, stating how AI-written contributions are handled.
+
+### Acceptance criteria
+
+- [ ] CONTRIBUTING.md exists at the repository root
+- [ ] It states that an agent publishes nothing on its own initiative: no pushed commit, issue, pull request or comment unless the person it works for asked for that act, and that person answers for it
+- [ ] It states that everything an agent writes for the repository discloses it: a commit body, issue, pull request or comment opens with a blockquote line starting `> 🤖 Written by AI`, completed with the contributor's own name
+- [ ] GitHub's new-issue page links to it
+
+### Technical notes
+
+- Modelled on the AI contribution rules in `~/Projects/examples/go/go/caddyserver_caddy/AGENTS.md` and `~/Projects/examples/go/go/traefik_traefik/AGENTS.md`.
+- The `> 🤖` prefix is the one gh-solo's gates test, so a contributor's line and the owner's agents' line read the same way.
+
+### Dependencies
+
+None.
