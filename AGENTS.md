@@ -17,9 +17,10 @@ The toolchain is pinned in mise.toml and every command is a task in Taskfile.yam
 ## Rules
 
 - **Load the `go-style` skill before writing Go.** It holds the judgement the linters cannot check, and the ADRs and the linter configuration win wherever it differs from them. For UI work, crush's Bubble Tea rules, named under *Reference code*, apply on top of it.
+- **Use only the terms in `docs/VOCABULARY.md`** in code identifiers, docs, issues, commits and UI text, and never call a concept by a name its entry lists under **Never**. A branch that needs a term the file lacks adds it there in the same PR rather than coining one in passing, per ADR 0015.
 - **Never edit a golden file by hand.** Regenerate it with `task test:update` and review the changed `.golden` files in the diff.
-- **Trust the ADRs and the reference clones over memory.** bubbletea v2, at `charm.land/bubbletea/v2` with bubbles and lipgloss beside it, is newer than most training data, and many clones below are still on v1: check a clone's go.mod before copying from it.
-- **Search the reference clones, never read them whole.** Some are hundreds of megabytes; grep for the symbol or pattern and read the files it finds.
+- **Trust the ADRs and the reference repositories over memory.** bubbletea v2, at `charm.land/bubbletea/v2` with bubbles and lipgloss beside it, is newer than most training data, and many clones below are still on v1: check a clone's go.mod before copying from it.
+- **Search the reference repositories, never read them whole.** Some are hundreds of megabytes; grep for the symbol or pattern and read the files it finds.
 
 ## Reference code
 
@@ -36,4 +37,4 @@ Local clones of upstream repositories live under `~/Projects/examples/`. Each fo
   - Terminal apps on other UI libraries, for ideas only: `jesseduffield_lazygit`, `derailed_k9s`, `junegunn_fzf`.
   - Libraries and tools this repository uses or may: `pelletier_go-toml`, `google_go-cmp`, `spf13_cobra`, `dominikh_go-tools`, `golangci_golangci-lint`, `go-task_task`, `goreleaser_goreleaser`.
   - The rest are well-built applications and servers to compare against.
-- **Intercom: `~/Projects/examples/SDK/intercom/`.** `intercom_Intercom-OpenAPI` is Intercom's OpenAPI description and the authority on the REST API; the official developer docs at https://developers.intercom.com/ cover what it leaves out, such as authentication, rate limits and webhooks. The official SDKs beside it are models for `internal/intercom`, never dependencies.
+- **Intercom: `~/Projects/examples/SDK/intercom/`.** `intercom_Intercom-OpenAPI` is Intercom's OpenAPI description and the authority on the REST API; the official developer docs at https://developers.intercom.com/ cover what it leaves out, such as authentication, rate limits and webhooks; the Help Center at https://www.intercom.com/help/en/ is the authority on what the product calls things and how it behaves. `docs/VOCABULARY.md` records what each of the three calls every Intercom term. The official SDKs beside it are models for `internal/intercom`, never dependencies.

@@ -17,7 +17,7 @@ Every issue needs a place to cite for why the app is built the way it is, and a 
 - Every architecture decision is an ADR in `docs/adr/`, one decision per file, named by a four-digit number in order of acceptance and a kebab-case title, like `0002-scope-of-v1.md`.
 - Each ADR follows Michael Nygard's format: Status, Context, Decision, Consequences. Its Context cites what it was decided from: the docs read and the example code looked at.
 - An ADR lands through a reviewed pull request, and the merge is its acceptance, so it is committed with the status Accepted.
-- An accepted ADR is never edited except for its status line. A changed decision is a new ADR that says `Supersedes NNNN`, and the old one's status becomes `Superseded by NNNN`.
+- An accepted ADR is never edited except for its status line and, per ADR 0015, a term the vocabulary rules out. A changed decision is a new ADR that says `Supersedes NNNN`, and the old one's status becomes `Superseded by NNNN`.
 - `docs/adr/README.md` indexes every ADR with its status and is the entry point issues link to.
 
 ## Consequences
