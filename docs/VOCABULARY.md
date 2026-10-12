@@ -267,9 +267,9 @@ The person who owns the repository and is its only committer, whose review appro
 
 ## palette
 
-The twenty roles with their colours, a public type in `app` sent to every tab at start.
+A named set of colours, such as Catppuccin Mocha or Tokyo Night, that a theme draws from.
 
-- **Source:** ADR 0009; ADR 0012.
+- **Source:** ADR 0009.
 - **Never:** colour scheme.
 
 ## pane
@@ -428,9 +428,9 @@ A set of admins, which a conversation can be assigned to.
 
 ## theme
 
-The colours given to the twenty roles; v1 ships Catppuccin Mocha alone.
+The code entity that maps the twenty roles onto a palette's colours: the public type in `app`, sent to every tab at start. v1 ships one, on the Catppuccin Mocha palette.
 
-- **Source:** ADR 0009.
+- **Source:** ADR 0009; ADR 0012.
 - **Never:** skin, colour scheme.
 
 ## ticket
