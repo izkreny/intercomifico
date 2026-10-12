@@ -40,4 +40,4 @@ None.
 
 ## Settled
 
-None yet.
+- **May this branch edit accepted ADRs?** Yes, decided by the owner in the terminal on 2026-10-12: where an accepted ADR uses a term the vocabulary rules out, in a way that could mislead later work, this branch corrects the ADR in place, and ADRs 0001 and 0015 record the rule.
