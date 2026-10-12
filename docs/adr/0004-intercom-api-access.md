@@ -44,7 +44,7 @@ The v1 endpoints:
 | Snooze, assign, close                | `POST /conversations/{id}/parts`, `message_type` `snoozed`, `assignment` or `close`            |
 | Customer panel                       | `GET /contacts/{id}`                                                                           |
 | Assignment targets                   | `GET /admins`, `GET /teams`                                                                    |
-| Saved replies                        | `GET /macros`, every page at startup, then refreshed on the reference-data timer               |
+| Macros                               | `GET /macros`, every page at startup, then refreshed on the reference-data timer               |
 
 ## Consequences
 

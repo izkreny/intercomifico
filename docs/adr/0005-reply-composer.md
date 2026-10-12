@@ -24,11 +24,11 @@ How comparable apps compose text:
 - **Drafts belong to conversations.** The composer keeps one draft per conversation id, in memory, and opening another conversation shows that conversation's own draft, empty if it has none. A send always goes to the conversation the draft belongs to.
 - Leaving the composer keeps its draft. Nothing the user typed is discarded without an explicit action.
 - The composer shows whether it holds a public reply or an internal note, and switching between them keeps the text.
-- **A saved-reply picker inserts an Intercom macro** at the cursor, listing the macros available to the acting admin per their `visible_to`. Placeholders are filled where the app holds the data, from the contact and the acting admin; any other placeholder stays visible in the text for the user to edit before sending.
+- **A macro picker inserts an Intercom macro** at the cursor, listing the macros available to the acting admin per their `visible_to`. Placeholders are filled where the app holds the data, from the contact and the acting admin; any other placeholder stays visible in the text for the user to edit before sending.
 - The owner chooses the remaining key bindings in the composer's implementation issue, and each is checked against the textarea's own bindings, so none of them is shadowed.
 
 ## Consequences
 
 - Composing works the same in every terminal and needs no editor configuration.
 - Long replies are less comfortable than in a real editor. Opening `$VISUAL` or `$EDITOR` on the draft, with the conversation history below a cut line as `git commit` does, is the planned extension, and it gets its own ADR when it is picked up.
-- With no subprocess, customer text never passes through a shell or a temporary file.
+- With no subprocess, a contact's text never passes through a shell or a temporary file.

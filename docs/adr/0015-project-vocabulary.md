@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Agents write most of this repository, and an agent that meets a concept it has no word for coins one. Each coinage is harmless alone; together they leave the code, the docs and the tracker calling one thing by several names. An inventory of the ADRs, AGENTS.md and the open issues already finds it: Intercom's macro is a saved reply across the ADRs and its admin a teammate, and ADR 0012 alone calls a build carrying extra tabs a custom build, a company's own build and an outside build.
+Agents write most of this repository, and an agent that meets a concept it has no word for coins one. Each coinage is harmless alone; together they leave the code, the docs and the tracker calling one thing by several names. An inventory of the ADRs, AGENTS.md and the open issues finds it: Intercom's macro also goes by saved reply and its admin by teammate, and a build carrying extra tabs had three names inside one ADR.
 
 Intercom's OpenAPI description (`github.com/intercom/Intercom-OpenAPI`, `descriptions/2.16`) names every object the app reads and writes, and `internal/intercom` mirrors those names, so a different word in the UI or the docs is a translation every reader has to make.
 

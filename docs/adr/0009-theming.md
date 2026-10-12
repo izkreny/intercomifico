@@ -12,7 +12,7 @@ Accepted
 
 The Charm libraries provide colours and styles, not themes. lipgloss takes any colour, true colour included, and bubbletea detects the terminal's colour profile with `colorprofile.Detect`, downsampling true colour to 256 or 16 colours where the terminal supports no more. Every major terminal emulator supports true colour. bubbletea v2 can also ask the terminal for its background colour, with `tea.RequestBackgroundColor`, and answers with a `tea.BackgroundColorMsg` whose `IsDark()` says whether it is light or dark.
 
-Themes on top of that are app code, and the reference apps solve it the same way: one struct of colours named by role, which the rest of the code reads. crush keeps a `Palette` struct and loads user themes from JSON files, and gh-dash puts a colour theme in its YAML config. huh ships Catppuccin through `github.com/catppuccin/go`, which carries Catppuccin's named colours as Go values; superfile and argonaut ship Catppuccin too.
+Themes on top of that are app code, and the reference repositories solve it the same way: one struct of colours named by role, which the rest of the code reads. crush keeps a `Palette` struct and loads user themes from JSON files, and gh-dash puts a colour theme in its YAML config. huh ships Catppuccin through `github.com/catppuccin/go`, which carries Catppuccin's named colours as Go values; superfile and argonaut ship Catppuccin too.
 
 Two vocabularies are candidates for the role names:
 
@@ -23,8 +23,8 @@ WCAG 2.2 Level AA asks for a contrast ratio of at least 4.5:1 between normal tex
 
 ## Decision
 
-- **Colours are named by DaisyUI's twenty semantic names, as they are**, in one palette. Its type is public in `app`, per ADR 0012, so every tab paints with the same roles; the theme's values live in `internal/ui`. No other code names a colour; a screen picks a role, and an internal note, for instance, uses `warning`, the yellow Intercom gives notes.
-- **v1 ships one theme, Catppuccin Mocha, in true colour.** Its colours come from `github.com/catppuccin/go`, as in huh, rather than hex values copied into the code.
+- **Colours are named by DaisyUI's twenty semantic names, as they are**, in one theme. Its type is public in `app`, per ADR 0012, so every tab paints with the same roles; the palette colours it maps them to live in `internal/ui`. No other code names a colour; a screen picks a role, and an internal note, for instance, uses `warning`, the yellow Intercom gives notes.
+- **v1 ships one theme, on the Catppuccin Mocha palette, in true colour.** Its colours come from `github.com/catppuccin/go`, as in huh, rather than hex values copied into the code.
 - **The roles map onto Catppuccin's names:**
 
   | Role                                                  | Catppuccin                   |
@@ -47,7 +47,7 @@ WCAG 2.2 Level AA asks for a contrast ratio of at least 4.5:1 between normal tex
 ## Consequences
 
 - The app looks the same in every true-colour terminal, whatever theme the terminal wears, and matches one running Catppuccin Mocha exactly.
-- A test checks every pair the Decision lists against 4.5:1 in Mocha, so a palette change that breaks AA fails the build.
+- A test checks every pair the Decision lists against 4.5:1 in Mocha, so a theme change that breaks AA fails the build.
 - `github.com/catppuccin/go` is a dependency, the one huh uses for the same job.
 - DaisyUI dims text with opacity, which a terminal lacks; lipgloss's `Faint` attribute does that job, for text such as timestamps.
 - v1 asks the terminal nothing about its background, since one theme leaves nothing to choose.
