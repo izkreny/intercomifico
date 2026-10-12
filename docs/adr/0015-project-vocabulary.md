@@ -19,7 +19,7 @@ The reviewer of every pull request reads AGENTS.md as the repository's standards
 ## Decision
 
 - **`docs/VOCABULARY.md` is the closed list of the project's terms.** Each concept has one name, one entry, a definition, its source, and the names it is never called.
-- **A term Intercom's API defines takes Intercom's name**, citing the schema in the OpenAPI description.
+- **A term Intercom's API defines takes Intercom's name**, citing the schema in the OpenAPI description. Its entry also records what the Help Center and the developer portal call it, so a place where Intercom's own sources disagree, as admin and teammate do, is written down once.
 - **A branch that introduces a term adds it to `docs/VOCABULARY.md` in the same pull request**, and the owner's review of that pull request is the term's approval. A term is never coined in passing.
 - **Code identifiers, docs, issues, commits and UI text use only the vocabulary's terms**, and AGENTS.md says so.
 - **Renaming a term is an edit to `docs/VOCABULARY.md`**, reviewed like any other. **An accepted ADR that uses a term the vocabulary rules out is corrected in place**, in the pull request that finds it, since a changed word is not a changed decision; ADR 0001 allows that one edit. What a concept is stays the ADRs' to decide: a definition here restates a decision rather than making one, and changing that decision is a new ADR that supersedes the old.
