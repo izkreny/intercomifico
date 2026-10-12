@@ -4,7 +4,14 @@
 
 The project's terms, one name per concept. Code identifiers, docs, issues, commits and UI text use these names, and never call a concept by a name its entry lists under **Never**; such a name may still be another entry's term or a fixed identifier, as `app` is a package and `comment` an Intercom value. A branch that needs a term this file lacks adds it here in the same pull request, per ADR 0015.
 
-A term Intercom's API defines takes Intercom's name, and its source names the schema in Intercom's OpenAPI description 2.16 (`github.com/intercom/Intercom-OpenAPI`, `descriptions/2.16`). General English, Go's own terms and the Charm libraries' names are not listed; their own docs define them.
+A term Intercom defines takes the name Intercom's API gives it, per ADR 0015, and its source says what each of Intercom's sources of truth calls it, so a place where they disagree is written down rather than rediscovered:
+
+- **API:** the OpenAPI description 2.16 (`github.com/intercom/Intercom-OpenAPI`, `descriptions/2.16`), the authority on names and on the REST API.
+- **Help:** the Help Center at https://www.intercom.com/help/en/, the authority on what the product calls a thing and how it behaves for an admin.
+- **Developers:** the developer portal at https://developers.intercom.com/, the authority on what the API description leaves out, such as authentication, rate limits and regions.
+- **Project:** the ADR or file that brings the term into this repository.
+
+Every other term cites its project source alone. General English, Go's own terms and the Charm libraries' names are not listed; their own docs define them.
 
 ## acceptance criteria
 
@@ -31,7 +38,10 @@ The tab in front, the one key presses reach.
 
 An account with access to the workspace, which a conversation can be assigned to.
 
-- **Source:** Intercom, the `admin` schema.
+- **Source:**
+  - **API:** the `admin` schema.
+  - **Help:** teammate; admin there is a permission level, not the account.
+  - **Developers:** admin, with teammate in prose.
 - **Never:** teammate, agent, operator.
 
 ## ADR
@@ -52,14 +62,22 @@ An AI coding agent working the repository under AGENTS.md.
 
 The conversation action that gives a conversation to an admin or a team, chosen in the assign picker.
 
-- **Source:** Intercom, `message_type` `assignment` on `POST /conversations/{id}/parts`; ADR 0002.
+- **Source:**
+  - **API:** `message_type` `assignment` on `POST /conversations/{id}/parts`.
+  - **Help:** Assign.
+  - **Developers:** assign, under Manage a conversation.
+  - **Project:** ADR 0002.
 - **Never:** transfer, route.
 
 ## close
 
 The conversation action that moves a conversation to the `closed` state.
 
-- **Source:** Intercom, `message_type` `close` on `POST /conversations/{id}/parts`; ADR 0002.
+- **Source:**
+  - **API:** `message_type` `close` on `POST /conversations/{id}/parts`.
+  - **Help:** Close, and Send and close.
+  - **Developers:** close, under Manage a conversation.
+  - **Project:** ADR 0002.
 - **Never:** resolve, archive.
 
 ## composer
@@ -73,14 +91,20 @@ The pane holding the bubbles textarea where a draft is written and sent as a rep
 
 A person the workspace talks to, a lead or a user in Intercom's terms, whose details the customer panel shows.
 
-- **Source:** Intercom, the `contact` schema.
+- **Source:**
+  - **API:** the `contact` schema, whose `role` is `user` or `lead`.
+  - **Help:** contact for the record and customer in prose; visitor, lead and user are its stages.
+  - **Developers:** contact, a user or a lead.
 - **Never:** customer, client, end user.
 
 ## conversation
 
 A thread between a contact and the workspace, made of conversation parts and always in one state.
 
-- **Source:** Intercom, the `conversation` schema.
+- **Source:**
+  - **API:** the `conversation` schema.
+  - **Help:** conversation.
+  - **Developers:** conversation.
 - **Never:** ticket, chat, case.
 
 ## conversation action
@@ -94,7 +118,10 @@ Snooze, assign or close, applied to one conversation.
 
 One item in a conversation's history, such as a reply, a note or an assignment; "part" for short.
 
-- **Source:** Intercom, the `conversation_part` schema.
+- **Source:**
+  - **API:** the `conversation_part` schema.
+  - **Help:** no name; the Inbox shows parts as messages and events.
+  - **Developers:** Conversation Part, and part alone.
 - **Never:** message, entry.
 
 ## custom build
@@ -183,7 +210,7 @@ The line of key bindings drawn from the key map with bubbles `help`.
 
 ## inbox
 
-The app's v1 tab, one model holding the queue list, the conversation, the composer and the customer panel. A team's inbox in Intercom is always named "a team's inbox".
+The app's v1 tab, one model holding the queue list, the conversation, the composer and the customer panel. Intercom's inbox for one team is always named a team inbox, the Help Center's name.
 
 - **Source:** ADR 0008; ADR 0012.
 - **Never:** main view, home.
@@ -227,7 +254,10 @@ What the inbox shows from start until the first calls return.
 
 A pre-defined response the composer inserts at its cursor, listed by the macro picker.
 
-- **Source:** Intercom, the `macro` schema.
+- **Source:**
+  - **API:** the `macro` schema, glossed as a saved reply.
+  - **Help:** macro; saved reply is its former name.
+  - **Developers:** macro, glossed as a saved reply.
 - **Never:** saved reply, canned response, template, snippet.
 
 ## Mine
@@ -241,7 +271,11 @@ The queue of conversations assigned to the acting admin, open ones first and sno
 
 An internal conversation part that only admins see, drawn in the `warning` role.
 
-- **Source:** Intercom, `message_type` `note` on `POST /conversations/{id}/reply`; ADR 0005.
+- **Source:**
+  - **API:** `message_type` `note` on `POST /conversations/{id}/reply`.
+  - **Help:** internal note, written in the composer's Note mode.
+  - **Developers:** note.
+  - **Project:** ADR 0005.
 - **Never:** comment, internal comment, private reply.
 
 ## open contact
@@ -346,14 +380,22 @@ The key that runs a poll tick and the reference-data refresh at once and restart
 
 The `region` setting, `eu`, `us` or `au`, choosing Intercom's host.
 
-- **Source:** ADR 0004.
+- **Source:**
+  - **API:** not covered; each region is its own host.
+  - **Help:** Regional Data Hosting, in the US, EU or Australia.
+  - **Developers:** regions: US, EU and Australia.
+  - **Project:** ADR 0004.
 - **Never:** data centre, zone.
 
 ## reply
 
 A public conversation part addressed to the contact, sent from the composer.
 
-- **Source:** Intercom, `message_type` `comment` on `POST /conversations/{id}/reply`; ADR 0005.
+- **Source:**
+  - **API:** `message_type` `comment` on `POST /conversations/{id}/reply`.
+  - **Help:** reply, written in the composer's Reply mode.
+  - **Developers:** reply, under Reply to a conversation.
+  - **Project:** ADR 0005.
 - **Never:** comment, response, answer.
 
 ## role
@@ -381,7 +423,11 @@ A value with a built-in default, overridden by the settings file and that by an 
 
 The conversation action that moves a conversation to the `snoozed` state until a time chosen in the snooze picker.
 
-- **Source:** Intercom, `message_type` `snoozed` on `POST /conversations/{id}/parts`; ADR 0002.
+- **Source:**
+  - **API:** `message_type` `snoozed` on `POST /conversations/{id}/parts`.
+  - **Help:** Snooze.
+  - **Developers:** snooze, under Manage a conversation.
+  - **Project:** ADR 0002.
 - **Never:** defer, postpone.
 
 ## spike
@@ -395,7 +441,10 @@ An issue that answers a question rather than shipping a feature.
 
 A conversation's `state`: `open`, `snoozed` or `closed`.
 
-- **Source:** Intercom, the `conversation` schema.
+- **Source:**
+  - **API:** `state` on the `conversation` schema.
+  - **Help:** the Open, Snoozed and Closed statuses.
+  - **Developers:** open, closed and snoozed.
 - **Never:** status.
 
 ## tab
@@ -423,7 +472,10 @@ A command in Taskfile.yaml, run as `task <name>`.
 
 A set of admins, which a conversation can be assigned to.
 
-- **Source:** Intercom, the `team` schema.
+- **Source:**
+  - **API:** the `team` schema.
+  - **Help:** team, each with its own team inbox.
+  - **Developers:** team.
 - **Never:** group, squad.
 
 ## theme
@@ -437,13 +489,21 @@ The code entity that maps the twenty roles onto a palette's colours: the public 
 
 Intercom's ticket object, out of v1; never a name for a conversation or an issue.
 
-- **Source:** Intercom, the `ticket` schema; ADR 0002.
+- **Source:**
+  - **API:** the `ticket` schema.
+  - **Help:** ticket, an object beside the conversation.
+  - **Developers:** ticket, with endpoints of its own.
+  - **Project:** ADR 0002.
 
 ## token
 
 The access token of the private Intercom app, read from `INTERCOMIFICO_TOKEN` or the keyring and never written anywhere.
 
-- **Source:** ADR 0004.
+- **Source:**
+  - **API:** the `Authorization: Bearer` header.
+  - **Help:** not covered.
+  - **Developers:** Access Token, of a private app in the Developer Hub.
+  - **Project:** ADR 0004.
 - **Never:** API key, password, secret.
 
 ## UI state
@@ -476,7 +536,11 @@ The queue the inbox shows, whose search each poll tick runs again.
 
 ## workspace
 
-The Intercom account whose conversations the app shows, one per run; the API's `app` object, which this repository never calls an app.
+The Intercom space a company works in, whose conversations the app shows, one per run. Intercom's own prose calls it a workspace in every source, and only the API's schema key is `app`, so the name follows Intercom's.
 
-- **Source:** Intercom, the `app` schema; ADR 0002.
+- **Source:**
+  - **API:** the `app` schema, described as "App is a workspace on Intercom".
+  - **Help:** workspace.
+  - **Developers:** workspace; an app there is the integration built inside one.
+  - **Project:** ADR 0002.
 - **Never:** app, account, instance.
