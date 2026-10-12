@@ -22,11 +22,11 @@ The reviewer of every pull request reads AGENTS.md as the repository's standards
 - **A term Intercom's API defines takes Intercom's name**, citing the schema in the OpenAPI description.
 - **A branch that introduces a term adds it to `docs/VOCABULARY.md` in the same pull request**, and the owner's review of that pull request is the term's approval. A term is never coined in passing.
 - **Code identifiers, docs, issues, commits and UI text use only the vocabulary's terms**, and AGENTS.md says so.
-- **Renaming a term is an edit to `docs/VOCABULARY.md`**, reviewed like any other. Accepted ADRs keep the words they were written with, per ADR 0001; where one names a concept differently, the vocabulary's name wins. What a concept is stays the ADRs' to decide: a definition here restates a decision rather than making one, and changing that decision is a new ADR that supersedes the old.
+- **Renaming a term is an edit to `docs/VOCABULARY.md`**, reviewed like any other. **An accepted ADR that uses a term the vocabulary rules out is corrected in place**, in the pull request that finds it, since a changed word is not a changed decision; ADR 0001 allows that one edit. What a concept is stays the ADRs' to decide: a definition here restates a decision rather than making one, and changing that decision is a new ADR that supersedes the old.
 
 ## Consequences
 
 - A word missing from the vocabulary, or a concept called by a name its entry lists under **Never**, becomes a review finding.
 - Every term is approved before it spreads, at the cost of one more file in the diff of the branch that needs it.
-- Older ADRs read with words the vocabulary has since ruled out, such as saved reply; their meaning is unchanged and the vocabulary names the term that replaced each.
+- Every ADR reads in the vocabulary's terms, so an agent copying a name out of a decision copies an approved one.
 - General English, Go's terms and the Charm libraries' names stay out, so the list stays short enough to read whole.
